@@ -55,7 +55,7 @@ angular.module('starter.controllers', [])
 })
 
 .controller("StyleDetailController", function($scope, $http, $stateParams) {
-  alert("test");
+  
 });
 
 
