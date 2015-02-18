@@ -65,7 +65,18 @@ angular.module('starter', ['ionic', 'starter.controllers', 'akoenig.deckgrid'])
         controller: 'StylesController'
       }
     }
+  })
+
+  .state('app.style-details', {
+    url: "/styles/:styleId",
+    views: {
+      'menuContent' : {
+        templateUrl : "templates/style-details.html",
+        controller : "StyleDetailController"
+      }
+    }
   });
+
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/app/dashboard');
 });

@@ -9,13 +9,15 @@
 	</div>
 
     <div ng-repeat="style in styles | filter:query | orderBy:orderProp" class="card">
-	  <div class="item item-divider">
-	    {{style.Name}}
-	  </div>
-	  <div class="item item-text-wrap">
-	    Model: {{style.Submodel.ModelName}}</br>
-	    Trim: {{style.Trim}}
-	  </div>
+	    <ion-item href="/#/app/styles/{{style.Id}}">
+		  <div class="item item-divider">
+		    {{style.Name}}
+		  </div>
+		  <div class="item item-text-wrap">
+		    Model: {{style.Submodel.ModelName}}</br>
+		    Trim: {{style.Trim}}
+		  </div>
+		</ion-item>
 	</div>
   </ion-content>
 </ion-view>

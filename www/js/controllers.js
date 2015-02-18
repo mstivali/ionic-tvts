@@ -42,12 +42,20 @@ angular.module('starter.controllers', [])
 
 .controller('StylesController', function($scope, $http, $stateParams) {
 
+  $scope.modelId = $stateParams.modelId;
+
   $http({
     url: 'http://tvts-api.azurewebsites.net/api/styles', 
     method: "GET",
-    params: {modelId: 'Toyota_4Runner'}
+    params: {modelId: $stateParams.modelId}
   }).success(function(data){
      $scope.styles = data.Styles;
   })
 
+})
+
+.controller("StyleDetailController", function($scope, $http, $stateParams) {
+  alert("test");
 });
+
+
