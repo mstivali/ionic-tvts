@@ -30,42 +30,42 @@ angular.module('starter', ['ionic', 'starter.controllers', 'akoenig.deckgrid'])
     controller: 'AppCtrl'
   })
 
-  .state('app.search', {
-    url: "/search",
+  .state('app.dashboard', {
+    url: "/dashboard",
     views: {
       'menuContent': {
-        templateUrl: "templates/search.html"
+        templateUrl: "templates/dashboard.html"
       }
     }
   })
 
-  .state('app.browse', {
-    url: "/browse",
+  .state('app.inventory', {
+    url: "/inventory",
     views: {
       'menuContent': {
-        templateUrl: "templates/browse.html"
+        templateUrl: "templates/inventory.html"
       }
     }
   })
-    .state('app.playlists', {
-      url: "/playlists",
+    .state('app.models', {
+      url: "/models",
       views: {
         'menuContent': {
-          templateUrl: "templates/playlists.html",
-          controller: 'PlaylistsCtrl'
+          templateUrl: "templates/models.html",
+          controller: 'ModelsController'
         }
       }
     })
 
-  .state('app.single', {
-    url: "/playlists/:playlistId",
+  .state('app.styles', {
+    url: "/models/:modelId",
     views: {
       'menuContent': {
-        templateUrl: "templates/playlist.html",
-        controller: 'PlaylistCtrl'
+        templateUrl: "templates/styles.html",
+        controller: 'StylesController'
       }
     }
   });
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/playlists');
+  $urlRouterProvider.otherwise('/app/dashboard');
 });

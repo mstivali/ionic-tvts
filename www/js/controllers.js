@@ -33,29 +33,12 @@ angular.module('starter.controllers', [])
   };
 })
 
-.controller('PlaylistsCtrl', function($scope, $http) {
+.controller('ModelsController', function($scope, $http) {
 
   $http.get('cars/cars.json').success(function(data) {
       $scope.models = data;
     });
-
-  
-
-  $scope.photos = [
-    {id: 'p1', 'title': 'A nice day!', src: "http://lorempixel.com/300/400/"},
-    {id: 'p2', 'title': 'Puh!', src: "http://lorempixel.com/300/400/sports"},
-    {id: 'p3', 'title': 'What a club!', src: "http://lorempixel.com/300/400/nightlife"}
-];
-
-  $scope.playlists = [
-    { title: 'Reggae', id: 1 },
-    { title: 'Chill', id: 2 },
-    { title: 'Dubstep', id: 3 },
-    { title: 'Indie', id: 4 },
-    { title: 'Rap', id: 5 },
-    { title: 'Cowbell', id: 6 }
-  ];
 })
 
-.controller('PlaylistCtrl', function($scope, $stateParams) {
+.controller('StylesController', function($scope, $stateParams) {
 });
