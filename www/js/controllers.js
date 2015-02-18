@@ -40,5 +40,14 @@ angular.module('starter.controllers', [])
     });
 })
 
-.controller('StylesController', function($scope, $stateParams) {
+.controller('StylesController', function($scope, $http, $stateParams) {
+
+  $http({
+    url: 'http://tvts-api.azurewebsites.net/api/styles', 
+    method: "GET",
+    params: {modelId: 'Toyota_4Runner'}
+  }).success(function(data){
+     $scope.styles = data.Styles;
+  })
+
 });

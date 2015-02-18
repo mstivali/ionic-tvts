@@ -1,5 +1,21 @@
 <ion-view view-title="Vehicle Styles">
   <ion-content>
-    <h1>Styles</h1>
+
+  	<div class="list list-inset">
+	  <label class="item item-input">
+	    <i class="icon ion-search placeholder-icon"></i>
+	    <input type="text" placeholder="Search" ng-model="query">
+	  </label>
+	</div>
+
+    <div ng-repeat="style in styles | filter:query | orderBy:orderProp" class="card">
+	  <div class="item item-divider">
+	    {{style.Name}}
+	  </div>
+	  <div class="item item-text-wrap">
+	    Model: {{style.Submodel.ModelName}}</br>
+	    Trim: {{style.Trim}}
+	  </div>
+	</div>
   </ion-content>
 </ion-view>
