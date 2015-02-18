@@ -1,0 +1,79 @@
+[
+    {
+        "age" : 0,
+        "id": "Toyota_4Runner",
+        "imageUrl": "img/cars/4Runner.jpg", 
+        "name": "4Runner"
+    },
+    {
+        "age" : 1,
+        "id": "Toyota_Avalon",
+        "imageUrl": "img/cars/avalon.jpg", 
+        "name": "Avalon"
+    },
+    {   "age" : 1,
+        "id": "Toyota_Avalon_Hybrid",
+        "imageUrl": "img/cars/avalon_hybrid.jpg", 
+        "name": "Avalon Hybrid"
+    },
+    {
+        "age" : 4,
+        "id": "Toyota_Corolla",
+        "imageUrl": "img/cars/corolla.jpg", 
+        "name": "Corolla"
+    },
+    {
+        "age" : 5,
+        "id": "Toyota_Highlander",
+        "imageUrl": "img/cars/highlander.jpg", 
+        "name": "Highlander"
+    },
+    {
+        "age" : 6,
+        "id": "Toyota_Highlander_Hybrid",
+        "imageUrl": "img/cars/highlander_hybrid.jpg", 
+        "name": "Highlander Hybrid"
+    },
+    {
+        "age" : 8,
+        "id": "Toyota_Prius",
+        "imageUrl": "img/cars/prius.jpg", 
+        "name": "Prius"
+    },
+    {
+        "age" : 10,
+        "id": "Toyota_Prius_c",
+        "imageUrl" : "img/cars/prius_c.jpg",
+        "name": "Prius c"
+    },
+    {
+        "age" : 12,
+        "id": "Toyota_RAV4",
+        "imageUrl" : "img/cars/rav4.jpg",
+        "name": "RAV4"
+    },
+    {
+        "age" : 13,
+        "id": "Toyota_Sequoia",
+        "imageUrl" : "img/cars/sequoia.jpg",
+        "name": "Sequoia"
+    },
+    {
+        "age" : 16,
+        "id": "Toyota_Tundra",
+        "imageUrl" : "img/cars/tundra.jpg",
+        "name": "Tundra"
+    },
+    {
+        "age" : 17,
+        "id": "Toyota_Venza",
+        "imageUrl" : "img/cars/venza.jpg",
+        "name": "Venza"
+    },
+    {
+        "age" : 18,
+        "id": "Toyota_Yaris",
+        "imageUrl" : "img/cars/yaris.png",
+        "name": "Yaris"
+    }
+]

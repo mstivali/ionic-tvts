@@ -1,0 +1,24 @@
+<ion-view view-title="Toyota Models">
+  <ion-content>
+
+<!--   <div class="row">
+    <ion-list>
+      <ion-item class="list card" ng-repeat="model in models" href="#/app/playlists/{{playlist.id}}">
+   
+      	
+      	<img ng-src="{{model.imageUrl}}">
+        
+      <div>
+        <span>{{model.name}}</span>
+      </div>
+      </ion-item>
+    </ion-list>
+  </div> -->
+    <div deckgrid class="deckgrid" source="models">
+      <a href="/#/app/playlists/{{card.id}}"><div href="#/app/browse" align="center" class="a-card card">
+          <img href="#/app/browse" ng-src="{{card.imageUrl}}">
+          <h4>{{card.name}}</h4>
+      </div></a>
+    </div>
+  </ion-content>
+</ion-view>

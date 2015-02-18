@@ -1,0 +1,872 @@
+{
+    "name": "4 Runner Limited 4dr SUV (4.0L 6cyl 5A)", 
+
+    "Engines": [
+        {
+            "Id": "200710343",
+            "Name": "4.0L V6 24 Valve   Gas Regular Unleaded 1GR-FE",
+            "EquipmentType": "ENGINE",
+            "Availability": "STANDARD",
+            "CompressionRatio": 10.4,
+            "Cylinder": 6,
+            "Size": 4,
+            "Displacement": 3956,
+            "Configuration": "V",
+            "FuelType": "regular unleaded",
+            "Horsepower": 270,
+            "Torque": 278,
+            "TotalValves": 24,
+            "ManufacturerEngineCode": "1GR-FE",
+            "Type": "gas",
+            "Code": "6VNAG4.0",
+            "CompressorType": "NA"
+        }
+    ],
+    "EnginesCount": 1,
+
+    "transmissions": [{
+        "id": "200710346",
+        "name": "5A",
+        "equipmentType": "TRANSMISSION",
+        "availability": "STANDARD",
+        "automaticType": "Shiftable automatic",
+        "transmissionType": "AUTOMATIC",
+        "numberOfSpeeds": "5"
+    }],
+    "transmissionsCount": 1,
+
+    "images": [
+        "img/cars/4Runner-1.jpg", 
+        "img/cars/4Runner-2.jpg", 
+        "img/cars/4Runner-3.jpg", 
+        "img/cars/4Runner-5.jpg", 
+        "img/cars/4Runner-4.jpg",
+        "img/cars/4Runner-6.jpg",
+        "img/cars/4Runner-7.jpg"
+
+    ],
+
+    "equipment": [
+        {
+            "id": "20047746515",
+            "name": "Air Conditioning",
+            "equipmentType": "OTHER",
+            "availability": "STANDARD",
+            "attributes": [
+                {
+                    "name": "Front Air Conditioning Zones",
+                    "value": "dual"
+                },
+                {
+                    "name": "Front Air Conditioning",
+                    "value": "automatic climate control"
+                },
+                {
+                    "name": "Rear Heat",
+                    "value": "rear ventilation ducts with fan control"
+                },
+                {
+                    "name": "Rear Air Conditioning Zones",
+                    "value": "single"
+                },
+                {
+                    "name": "Rear Air Conditioning",
+                    "value": "automatic climate control"
+                },
+                {
+                    "name": "Air Filtration",
+                    "value": "interior air filtration"
+                }
+            ]
+        },
+        {
+            "id": "20047746518",
+            "name": "Brake System",
+            "equipmentType": "OTHER",
+            "availability": "STANDARD",
+            "attributes": [
+                {
+                    "name": "Rear Brake Type",
+                    "value": "disc"
+                },
+                {
+                    "name": "Electronic Brakeforce Distribution",
+                    "value": "electronic brakeforce distribution"
+                },
+                {
+                    "name": "Front Brake Diameter",
+                    "value": "12.6"
+                },
+                {
+                    "name": "Front Brake Type",
+                    "value": "ventilated disc"
+                },
+                {
+                    "name": "Antilock Braking System",
+                    "value": "4-wheel ABS"
+                },
+                {
+                    "name": "Braking Assist",
+                    "value": "braking assist"
+                },
+                {
+                    "name": "Rear Brake Diameter",
+                    "value": "11.8"
+                }
+            ]
+        },
+        {
+            "id": "20047746519",
+            "name": "Mobile Connectivity",
+            "equipmentType": "OTHER",
+            "availability": "STANDARD",
+            "attributes": [
+                {
+                    "name": "Phone",
+                    "value": "pre-wired for phone"
+                },
+                {
+                    "name": "Bluetooth",
+                    "value": "Bluetooth"
+                }
+            ]
+        },
+        {
+            "id": "20047746521",
+            "name": "Steering Wheel",
+            "equipmentType": "OTHER",
+            "availability": "STANDARD",
+            "attributes": [
+                {
+                    "name": "Steering Wheel Adjustments",
+                    "value": "tilt and telescopic"
+                },
+                {
+                    "name": "Cruise Controls On Steering Wheel",
+                    "value": "cruise controls"
+                },
+                {
+                    "name": "Steering Wheel Trim",
+                    "value": "leather"
+                },
+                {
+                    "name": "Audio Controls On Steering Wheel",
+                    "value": "audio controls"
+                },
+                {
+                    "name": "Phone Controls On Steering Wheel",
+                    "value": "phone controls on steering wheel"
+                }
+            ]
+        },
+        {
+            "id": "20047746524",
+            "name": "Instrumentation",
+            "equipmentType": "OTHER",
+            "availability": "STANDARD",
+            "attributes": [
+                {
+                    "name": "External Temperature Gauge",
+                    "value": "external temperature display"
+                },
+                {
+                    "name": "Compass",
+                    "value": "compass"
+                },
+                {
+                    "name": "Tire Pressure Monitoring System",
+                    "value": "tire pressure monitoring"
+                },
+                {
+                    "name": "Low Fuel Level Indicator",
+                    "value": "low fuel level"
+                },
+                {
+                    "name": "Trip Computer",
+                    "value": "trip computer"
+                },
+                {
+                    "name": "Tachometer",
+                    "value": "tachometer"
+                },
+                {
+                    "name": "Clock",
+                    "value": "clock"
+                }
+            ]
+        },
+        {
+            "id": "20047746525",
+            "name": "2nd Row Seats",
+            "equipmentType": "OTHER",
+            "availability": "STANDARD",
+            "attributes": [
+                {
+                    "name": "Folding 2nd Row",
+                    "value": "split folding"
+                },
+                {
+                    "name": "2nd Row Seat Type",
+                    "value": "bench"
+                },
+                {
+                    "name": "Adjustable 2nd Row Headrests",
+                    "value": "height adjustable headrests"
+                },
+                {
+                    "name": "Number Of 2nd Row Headrests",
+                    "value": "3"
+                },
+                {
+                    "name": "2nd Row Center Armrest",
+                    "value": "folding with storage and pass-thru"
+                }
+            ]
+        },
+        {
+            "id": "20047746526",
+            "name": "Power Outlets",
+            "equipmentType": "OTHER",
+            "availability": "STANDARD",
+            "attributes": [
+                {
+                    "name": "2nd Row Power Outlet",
+                    "value": "12V"
+                },
+                {
+                    "name": "Power Outlet(s)",
+                    "value": "12V"
+                }
+            ]
+        },
+        {
+            "id": "20047746527",
+            "name": "Seatbelts",
+            "equipmentType": "OTHER",
+            "availability": "STANDARD",
+            "attributes": [
+                {
+                    "name": "Seatbelt Pretensioners",
+                    "value": "front and rear"
+                },
+                {
+                    "name": "Seatbelt Force Limiters",
+                    "value": "front and rear"
+                },
+                {
+                    "name": "2nd Row Center Seatbelt",
+                    "value": "3-point belt"
+                }
+            ]
+        },
+        {
+            "id": "20047746528",
+            "name": "Suspension",
+            "equipmentType": "OTHER",
+            "availability": "STANDARD",
+            "attributes": [
+                {
+                    "name": "Front Suspension Classification",
+                    "value": "independent"
+                },
+                {
+                    "name": "Independent Suspension",
+                    "value": "four-wheel"
+                },
+                {
+                    "name": "Rear Spring Type",
+                    "value": "coil springs"
+                },
+                {
+                    "name": "Rear Suspension Type",
+                    "value": "multi-link"
+                },
+                {
+                    "name": "Driver Adjustable Suspension",
+                    "value": "ride control"
+                },
+                {
+                    "name": "Rear Suspension Classification",
+                    "value": "independent"
+                },
+                {
+                    "name": "Front Stabilizer Bar",
+                    "value": "stabilizer bar"
+                },
+                {
+                    "name": "Front Spring Type",
+                    "value": "coil springs"
+                },
+                {
+                    "name": "Rear Stabilizer Bar",
+                    "value": "stabilizer bar"
+                },
+                {
+                    "name": "Front Suspension Type",
+                    "value": "multi-link"
+                }
+            ]
+        },
+        {
+            "id": "20047746529",
+            "name": "1st Row Seats",
+            "equipmentType": "OTHER",
+            "availability": "STANDARD",
+            "attributes": [
+                {
+                    "name": "1st Row Seat Type",
+                    "value": "bucket"
+                },
+                {
+                    "name": "Adjustable Seat Headrest",
+                    "value": "multi-adjustable headrests"
+                },
+                {
+                    "name": "1st Row Upholstery",
+                    "value": "leather"
+                },
+                {
+                    "name": "Seat Whiplash Protection",
+                    "value": "whiplash protection system"
+                },
+                {
+                    "name": "Number Of 1st Row Headrests",
+                    "value": "2"
+                }
+            ]
+        },
+        {
+            "id": "20047746530",
+            "name": "Cargo Dimensions",
+            "equipmentType": "OTHER",
+            "availability": "STANDARD",
+            "attributes": [
+                {
+                    "name": "Cargo Capacity, All Seats In Place",
+                    "value": "14.1"
+                }
+            ]
+        },
+        {
+            "id": "20047746533",
+            "name": "Steering",
+            "equipmentType": "OTHER",
+            "availability": "STANDARD",
+            "attributes": [
+                {
+                    "name": "Power Steering",
+                    "value": "electric speed-proportional power steering"
+                }
+            ]
+        },
+        {
+            "id": "20047746534",
+            "name": "Drive Type",
+            "equipmentType": "OTHER",
+            "availability": "STANDARD",
+            "attributes": [
+                {
+                    "name": "Driven Wheels",
+                    "value": "all wheel drive"
+                }
+            ]
+        },
+        {
+            "id": "20047746535",
+            "name": "Storage",
+            "equipmentType": "OTHER",
+            "availability": "STANDARD",
+            "attributes": [
+                {
+                    "name": "Cargo Tie Downs",
+                    "value": "cargo tie downs"
+                },
+                {
+                    "name": "Cupholders Location",
+                    "value": "front and rear"
+                },
+                {
+                    "name": "Door Pockets Location",
+                    "value": "front and rear"
+                },
+                {
+                    "name": "Seatback Storage",
+                    "value": "front seatback storage"
+                },
+                {
+                    "name": "Cargo Grocery Bag Holder",
+                    "value": "grocery bag holder"
+                },
+                {
+                    "name": "Overhead Console",
+                    "value": "overhead console with storage"
+                },
+                {
+                    "name": "Center Console",
+                    "value": "front console with storage"
+                }
+            ]
+        },
+        {
+            "id": "20047746536",
+            "name": "Doors",
+            "equipmentType": "OTHER",
+            "availability": "STANDARD",
+            "attributes": [
+                {
+                    "name": "Number Of Doors",
+                    "value": "4"
+                }
+            ]
+        },
+        {
+            "id": "20047746537",
+            "name": "Exterior Dimensions",
+            "equipmentType": "OTHER",
+            "availability": "STANDARD",
+            "attributes": [
+                {
+                    "name": "Overall Width Without Mirrors",
+                    "value": "73.8"
+                },
+                {
+                    "name": "Wheelbase",
+                    "value": "114.7"
+                },
+                {
+                    "name": "Overall Length",
+                    "value": "193.9"
+                },
+                {
+                    "name": "Overall Height",
+                    "value": "57.8"
+                },
+                {
+                    "name": "Overall Width With Mirrors",
+                    "value": "82.1"
+                },
+                {
+                    "name": "Rear Track",
+                    "value": "63.7"
+                },
+                {
+                    "name": "Front Track",
+                    "value": "64.1"
+                }
+            ]
+        },
+        {
+            "id": "20047746538",
+            "name": "Front Passenger Seat",
+            "equipmentType": "OTHER",
+            "availability": "STANDARD",
+            "attributes": [
+                {
+                    "name": "Height Adjustable Passenger Seat",
+                    "value": "height adjustable"
+                },
+                {
+                    "name": "Heated Passenger Seat",
+                    "value": "multi-level heating"
+                },
+                {
+                    "name": "Passenger Seat Whiplash Protection",
+                    "value": "whiplash protection system"
+                },
+                {
+                    "name": "Number Of Passenger Seat Power Adjustments",
+                    "value": "8"
+                },
+                {
+                    "name": "Adjustable Passenger Seat Headrest",
+                    "value": "height adjustable headrests"
+                }
+            ]
+        },
+        {
+            "id": "20047746539",
+            "name": "Airbags",
+            "equipmentType": "OTHER",
+            "availability": "STANDARD",
+            "attributes": [
+                {
+                    "name": "Head Airbags",
+                    "value": "front and rear"
+                },
+                {
+                    "name": "Passenger Airbag Deactivation",
+                    "value": "occupant sensing deactivation"
+                },
+                {
+                    "name": "Side Airbags",
+                    "value": "dual front"
+                },
+                {
+                    "name": "Knee Airbags",
+                    "value": "dual front"
+                },
+                {
+                    "name": "Passenger Airbag",
+                    "value": "Standard"
+                },
+                {
+                    "name": "Depowered Airbags",
+                    "value": "Standard"
+                }
+            ]
+        },
+        {
+            "id": "20047746540",
+            "name": "Exterior Lights",
+            "equipmentType": "OTHER",
+            "availability": "STANDARD",
+            "attributes": [
+                {
+                    "name": "Headlights Auto Delay",
+                    "value": "auto delay off"
+                },
+                {
+                    "name": "Exterior Entry Lights",
+                    "value": "exterior entry lighting"
+                },
+                {
+                    "name": "Daytime Running Lights",
+                    "value": "daytime running lights"
+                },
+                {
+                    "name": "Headlights Dusk Sensor",
+                    "value": "dusk sensing"
+                }
+            ]
+        },
+        {
+            "id": "20047746541",
+            "name": "Seating Configuration",
+            "equipmentType": "OTHER",
+            "availability": "STANDARD",
+            "attributes": [
+                {
+                    "name": "1st Row Seating Capacity",
+                    "value": "2"
+                },
+                {
+                    "name": "2nd Row Seating Capacity",
+                    "value": "3"
+                }
+            ]
+        },
+        {
+            "id": "20047746542",
+            "name": "Specifications",
+            "equipmentType": "OTHER",
+            "availability": "STANDARD",
+            "attributes": [
+                {
+                    "name": "Ege Highway Mpg",
+                    "value": "29"
+                },
+                {
+                    "name": "Aerodynamic Drag (cd)",
+                    "value": "0.26"
+                },
+                {
+                    "name": "Epa Combined Mpg",
+                    "value": "23"
+                },
+                {
+                    "name": "Epa City Mpg",
+                    "value": "20"
+                },
+                {
+                    "name": "Curb Weight",
+                    "value": "3957"
+                },
+                {
+                    "name": "Turning Diameter",
+                    "value": "39.0"
+                },
+                {
+                    "name": "Tco Curb Weight",
+                    "value": "3957"
+                },
+                {
+                    "name": "Ege Combined Mpg",
+                    "value": "23"
+                },
+                {
+                    "name": "Fuel Capacity",
+                    "value": "19.8"
+                },
+                {
+                    "name": "Manufacturer 0 60mph Acceleration Time (seconds)",
+                    "value": "6.6"
+                },
+                {
+                    "name": "Epa Highway Mpg",
+                    "value": "29"
+                },
+                {
+                    "name": "Ege City Mpg",
+                    "value": "20"
+                }
+            ]
+        },
+        {
+            "id": "20047746543",
+            "name": "Driver Seat",
+            "equipmentType": "OTHER",
+            "availability": "STANDARD",
+            "attributes": [
+                {
+                    "name": "Height Adjustable Driver Seat",
+                    "value": "height adjustable"
+                },
+                {
+                    "name": "Driver Seat Adjustable Lumbar",
+                    "value": "power adjustable lumbar support"
+                },
+                {
+                    "name": "Number Of Driver Seat Power Adjustments",
+                    "value": "8"
+                },
+                {
+                    "name": "Number Of Memorized Driver Seat Settings",
+                    "value": "2"
+                },
+                {
+                    "name": "Heated Driver Seat",
+                    "value": "multi-level heating"
+                }
+            ]
+        },
+        {
+            "id": "20047746544",
+            "name": "Windows",
+            "equipmentType": "OTHER",
+            "availability": "STANDARD",
+            "attributes": [
+                {
+                    "name": "Remote Window Operation",
+                    "value": "remote window operation"
+                },
+                {
+                    "name": "Rain Sensing Front Wipers",
+                    "value": "rain sensing"
+                },
+                {
+                    "name": "Heated Windshield Washer Jets",
+                    "value": "heated windshield washer jets"
+                },
+                {
+                    "name": "One Touch Windows",
+                    "value": "4"
+                },
+                {
+                    "name": "Power Windows",
+                    "value": "power windows"
+                },
+                {
+                    "name": "Intermittent Front Wipers",
+                    "value": "variable intermittent"
+                },
+                {
+                    "name": "Rear Defogger",
+                    "value": "rear defogger"
+                }
+            ]
+        },
+        {
+            "id": "20047746547",
+            "name": "Trunk",
+            "equipmentType": "OTHER",
+            "availability": "STANDARD",
+            "attributes": [
+                {
+                    "name": "Emergency Trunk Release",
+                    "value": "interior trunk release"
+                },
+                {
+                    "name": "Remote Trunk Release",
+                    "value": "remote trunk release"
+                }
+            ]
+        },
+        {
+            "id": "20047746550",
+            "name": "Sunroof",
+            "equipmentType": "OTHER",
+            "availability": "STANDARD",
+            "attributes": [
+                {
+                    "name": "One Touch Power Sunroof",
+                    "value": "one-touch power sunroof"
+                },
+                {
+                    "name": "Sunroof",
+                    "value": "power glass"
+                }
+            ]
+        },
+        {
+            "id": "20047746551",
+            "name": "Spare Tire/Wheel",
+            "equipmentType": "OTHER",
+            "availability": "STANDARD",
+            "attributes": [
+                {
+                    "name": "Spare Wheel Rim Type",
+                    "value": "steel"
+                },
+                {
+                    "name": "Spare Tire Mount Location",
+                    "value": "inside"
+                },
+                {
+                    "name": "Spare Tire Size",
+                    "value": "temporary"
+                }
+            ]
+        },
+        {
+            "id": "20047746552",
+            "name": "Interior Dimensions",
+            "equipmentType": "OTHER",
+            "availability": "STANDARD",
+            "attributes": [
+                {
+                    "name": "2nd Row Leg Room",
+                    "value": "37.4"
+                },
+                {
+                    "name": "2nd Row Shoulder Room",
+                    "value": "56.3"
+                },
+                {
+                    "name": "2nd Row Head Room",
+                    "value": "37.8"
+                },
+                {
+                    "name": "1st Row Leg Room",
+                    "value": "41.3"
+                },
+                {
+                    "name": "1st Row Head Room",
+                    "value": "37.2"
+                },
+                {
+                    "name": "1st Row Shoulder Room",
+                    "value": "57.5"
+                },
+                {
+                    "name": "Epa Interior Volume",
+                    "value": "111.3"
+                }
+            ]
+        },
+        {
+            "id": "20047746553",
+            "name": "Security",
+            "equipmentType": "OTHER",
+            "availability": "STANDARD",
+            "attributes": [
+                {
+                    "name": "Rolling Code Security",
+                    "value": "rolling code key"
+                },
+                {
+                    "name": "Engine Immobilizer",
+                    "value": "engine immobilizer"
+                },
+                {
+                    "name": "Power Door Locks",
+                    "value": "remote keyless power door locks"
+                },
+                {
+                    "name": "2 Stage Unlocking",
+                    "value": "remote 2-stage unlocking"
+                },
+                {
+                    "name": "Anti Theft Alarm System",
+                    "value": "remote anti-theft alarm system"
+                }
+            ]
+        },
+        {
+            "id": "20047746554",
+            "name": "Differential",
+            "equipmentType": "OTHER",
+            "availability": "STANDARD",
+            "attributes": [
+                {
+                    "name": "Limited Slip Center Differential",
+                    "value": "limited slip center differential"
+                },
+                {
+                    "name": "Center Differential",
+                    "value": "mechanical"
+                },
+                {
+                    "name": "Final Drive Ratio",
+                    "value": "3.08"
+                }
+            ]
+        },
+        {
+            "id": "20047746555",
+            "name": "Collision Safety System",
+            "equipmentType": "OTHER",
+            "availability": "STANDARD",
+            "attributes": [
+                {
+                    "name": "Post Collision Safety System",
+                    "value": "post-collision safety system"
+                },
+                {
+                    "name": "Pre Collision Safety System",
+                    "value": "pre-collision safety system"
+                }
+            ]
+        },
+        {
+            "id": "20047746556",
+            "name": "Misc. Interior Features",
+            "equipmentType": "OTHER",
+            "availability": "STANDARD",
+            "attributes": [
+                {
+                    "name": "Cruise Control",
+                    "value": "cruise control"
+                },
+                {
+                    "name": "Floor Mats",
+                    "value": "floor mats"
+                },
+                {
+                    "name": "Universal Remote Transmitter",
+                    "value": "universal remote transmitter"
+                },
+                {
+                    "name": "2nd Row Floor Mats",
+                    "value": "rear floor mats"
+                },
+                {
+                    "name": "Cargo Area Light",
+                    "value": "trunk light"
+                },
+                {
+                    "name": "Reading Lights",
+                    "value": "front and rear reading lights"
+                },
+                {
+                    "name": "Retained Accessory Power",
+                    "value": "retained accessory power"
+                },
+                {
+                    "name": "Floor Mat Material",
+                    "value": "carpet"
+                }
+            ]
+        }
+    ],
+    "equipmentCount": 31
+}
