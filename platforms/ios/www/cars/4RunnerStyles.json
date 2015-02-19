@@ -1,0 +1,95 @@
+{
+    "ModelName": "Toyota_4Runner",
+    "Styles": [
+        {
+            "Id": 200710330,
+            "Name": "Limited 4dr SUV (4.0L 6cyl 5A)",
+            "Submodel": {
+                "Body": "SUV",
+                "ModelName": "4Runner SUV",
+                "NiceName": "suv"
+            },
+            "Trim": "Limited"
+        },
+        {
+            "Id": 200710316,
+            "Name": "Limited 4dr SUV 4WD (4.0L 6cyl 5A)",
+            "Submodel": {
+                "Body": "SUV",
+                "ModelName": "4Runner SUV",
+                "NiceName": "suv"
+            },
+            "Trim": "Limited"
+        },
+        {
+            "Id": 200710331,
+            "Name": "SR5 Premium 4dr SUV 4WD (4.0L 6cyl 5A)",
+            "Submodel": {
+                "Body": "SUV",
+                "ModelName": "4Runner SUV",
+                "NiceName": "suv"
+            },
+            "Trim": "SR5 Premium"
+        },
+        {
+            "Id": 200710332,
+            "Name": "SR5 4dr SUV 4WD (4.0L 6cyl 5A)",
+            "Submodel": {
+                "Body": "SUV",
+                "ModelName": "4Runner SUV",
+                "NiceName": "suv"
+            },
+            "Trim": "SR5"
+        },
+        {
+            "Id": 200710317,
+            "Name": "Trail 4dr SUV 4WD (4.0L 6cyl 5A)",
+            "Submodel": {
+                "Body": "SUV",
+                "ModelName": "4Runner SUV",
+                "NiceName": "suv"
+            },
+            "Trim": "Trail"
+        },
+        {
+            "Id": 200710319,
+            "Name": "TRD PRO 4dr SUV 4WD (4.0L 6cyl 5A)",
+           "Submodel": {
+                "Body": "SUV",
+                "ModelName": "4Runner SUV",
+                "NiceName": "suv"
+            },
+            "Trim": "TRD PRO"
+        },
+        {
+            "Id": 200710324,
+            "Name": "Trail Premium 4dr SUV 4WD (4.0L 6cyl 5A)",
+            "Submodel": {
+                "Body": "SUV",
+                "ModelName": "4Runner SUV",
+                "NiceName": "suv"
+            },
+            "Trim": "Trail Premium"
+        },
+        {
+            "Id": 200710326,
+            "Name": "SR5 4dr SUV (4.0L 6cyl 5A)",
+            "Submodel": {
+                "Body": "SUV",
+                "ModelName": "4Runner SUV",
+                "NiceName": "suv"
+            },
+            "Trim": "SR5"
+       },
+        {
+            "Id": 200710328,
+            "Name": "SR5 Premium 4dr SUV (4.0L 6cyl 5A)",
+            "Submodel": {
+                "Body": "SUV",
+                "ModelName": "4Runner SUV",
+                "NiceName": "suv"
+            },
+            "Trim": "SR5 Premium"
+        }
+    ]
+}
