@@ -1,10 +1,10 @@
 <ion-view view-title="Toyota Models">
   <ion-content>
-    <div deckgrid class="deckgrid" source="models">
-      <div align="center" class="a-card card">
-          <a href="#/app/models/{{card.id}}"><img ng-src="{{card.imageUrl}}"></a>
-          <h4>{{card.name}}</h4>
-      </div>
-    </div>
+	    <div deckgrid class="deckgrid" source="models">
+	      <div align="center" class="a-card card">
+	          <a href="#/app/models/{{card.id}}"><img class="modelImgs" ng-src="{{card.imageUrl}}"></a>
+	          <h4>{{card.name}}</h4>
+	      </div>
+	    </div>
   </ion-content>
 </ion-view>
