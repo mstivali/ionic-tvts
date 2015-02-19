@@ -5,16 +5,16 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>FBC0B1C9-ACCC-44B1-915A-8A447279B209</string>
+	<string>D69047CC-0BB4-4CD4-9069-A7AA78065C3B</string>
 	<key>IDESourceControlProjectName</key>
-	<string>conference</string>
+	<string>TVTS</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>C8579832E89CDA903305D07A2236161C84767BC9</key>
 		<string>https://github.com/mstivali/ionic-tvts.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>platforms/ios/conference.xcodeproj</string>
+	<string>platforms/ios/TVTS.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>C8579832E89CDA903305D07A2236161C84767BC9</key>

@@ -28,13 +28,11 @@
     <feature name="Device">
         <param name="ios-package" value="CDVDevice" />
     </feature>
-    <name>conference</name>
+    <name>TVTS</name>
     <description>
-        An Ionic Framework and Cordova project.
-    </description>
-    <author email="hi@ionicframework" href="http://ionicframework.com/">
-      Ionic Framework Team
-    </author>
+        Toyota Vehicle Management System
+  </description>
+    <author email="matthewstivali@gmail.com" />
     <content src="index.html" />
     <access origin="*" />
     <preference name="webviewbounce" value="false" />
