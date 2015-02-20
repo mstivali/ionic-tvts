@@ -63,6 +63,16 @@ angular.module('starter.controllers', [])
 
     $scope.imageUrl = "img/cars/" + modelId + ".jpg";
 
+    $http({
+        url: 'http://tvts-api.azurewebsites.net/api/specs', 
+        method: "GET",
+        params: {styleId: $stateParams.styleId}
+      }).success(function(data){
+         $scope.engines = data.EngineDetail.Engines;
+         $scope.transmissions = data.TransmissionDetail.Transmissions;
+         $scope.equipmentArray = data.EquipmentDetail.Equipment;
+      });
+
     $scope.viewSpecs = function() {
       $state.go("app.vehicle-specs", 
         {
@@ -87,6 +97,98 @@ angular.module('starter.controllers', [])
          $scope.transmissions = data.TransmissionDetail.Transmissions;
          $scope.equipmentArray = data.EquipmentDetail.Equipment;
       });
+
+})
+
+.controller("InventoryController", 
+  function($scope, $ionicPopover, $ionicModal, $ionicPopup, $timeout) {
+
+    // .fromTemplate() method
+  // var template = '<ion-popover-view><ion-header-bar> <h1 class="title">My Popover Title</h1> </ion-header-bar> <ion-content> Hello! </ion-content></ion-popover-view>';
+
+  // $scope.popover = $ionicPopover.fromTemplate(template, {
+  //   scope: $scope,
+  // });
+
+  // .fromTemplateUrl() method
+  $ionicPopover.fromTemplateUrl('templates/popover-template.html', {
+    scope: $scope,
+  }).then(function(popover) {
+    $scope.popover = popover;
+  });
+
+
+  $scope.openPopover = function($event) {
+    $scope.popover.show($event);
+  };
+  $scope.closePopover = function() {
+    $scope.popover.hide();
+  };
+  //Cleanup the popover when we're done with it!
+  $scope.$on('$destroy', function() {
+    $scope.popover.remove();
+  });
+  // Execute action on hide popover
+  $scope.$on('popover.hidden', function() {
+    // Execute action
+  });
+  // Execute action on remove popover
+  $scope.$on('popover.removed', function() {
+    // Execute action
+  });
+
+  //modal
+  $ionicModal.fromTemplateUrl('templates/modal-template.html', {
+    scope: $scope,
+    animation: 'slide-in-up'
+  }).then(function(modal) {
+    $scope.modal = modal;
+  });
+
+  $scope.openTestModal = function() {
+    $scope.modal.show();
+  };
+  $scope.closeTestModal = function() {
+    $scope.modal.hide();
+  };
+  //Cleanup the modal when we're done with it!
+  $scope.$on('$destroy', function() {
+    $scope.modal.remove();
+  });
+  // Execute action on hide modal
+  $scope.$on('modal.hidden', function() {
+    // Execute action
+  });
+  // Execute action on remove modal
+  $scope.$on('modal.removed', function() {
+    // Execute action
+  });
+
+
+  //popup
+  $scope.showConfirm = function() {
+   var confirmPopup = $ionicPopup.confirm({
+     title: 'Consume Ice Cream',
+     template: 'Are you sure you want to eat this ice cream?'
+   });
+   confirmPopup.then(function(res) {
+     if(res) {
+       console.log('You are sure');
+     } else {
+       console.log('You are not sure');
+     }
+   });
+ };
+
+  $scope.showAlert = function() {
+   var alertPopup = $ionicPopup.alert({
+     title: 'Don\'t eat that!',
+     template: 'It might taste good'
+   });
+   alertPopup.then(function(res) {
+     console.log('Thank you for not eating my delicious ice cream cone');
+   });
+ };
 
 });
 

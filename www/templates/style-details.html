@@ -17,14 +17,82 @@
 		</div>
 		<div class="row">
 			<div class="col col-50 center">
-				<button on-tap="viewSpecs()" class="button button-block button-assertive">
+				<!-- <button on-tap="viewSpecs()" class="button button-block button-assertive">
 				  View Details
-				</button>
+				</button> -->
+			<button class="button button-block button-assertive">
+				  Add Vehicle Options
+			</button>
+			<button class="button button-block button-assertive">
+				  Choose Vehicle Color
+			</button>
 			<button class="button button-block button-assertive">
 				  Purchase Vehicle
-				</button>
+			</button>
 			</div>
 		</div>
 	</div>
+	</br>
+	<div class="card">
+	  <div class="item item-divider">
+	    Engine
+	  </div>
+	  <div class="item item-text-wrap">
+	    <dl ng-repeat="engine in engines">
+		      <dt>Name<dt>
+		      <dd>{{engine.Name}}</dd>
+		      <dt>Compression Ratio<dt>
+		      <dd>{{engine.CompressionRatio}}</dd>
+		      <dt>Cylinders</dt>
+		      <dd>{{engine.Cylinder}}</dd>
+		      <dt>Displacement</dt>
+		      <dd>{{engine.Displacement}}</dd>
+		      <dt>Configuration</dt>
+		      <dd>{{engine.Configuration}}</dd>
+		      <dt>Fuel Type</dt>
+		      <dd>{{engine.FuelType}}</dd>
+		      <dt>Horsepower</dt>
+		      <dd>{{engine.Horsepower}}</dd>
+		      <dt>Torque</dt>
+		      <dd>{{engine.Torque}}</dd>
+		      <dt>Total Valves</dt>
+		      <dd>{{engine.TotalValves}}</dd>
+		      <dt>Compressor Type</dt>
+		      <dd>{{engine.CompressorType}}</dd>	
+		    </dl>
+	  </div>
+   </div>
+   <div class="card">
+	  <div class="item item-divider">
+	    Transmission
+	  </div>
+	  <div class="item item-text-wrap">
+	    <dl ng-repeat="transmission in transmissions">
+	      <dt>Name</dt>
+	      <dd>{{transmission.Name}}</dd>
+	      <dt>Automatic Type</dt>
+	      <dd>{{transmission.AutomaticType}}</dd>
+	      <dt>Number Of Speeds</dt>
+	      <dd>{{transmission.NumberOfSpeeds}}</dd>
+	    </dl>
+	  </div>
+   </div>
+   <div ng-repeat="item in equipmentArray">
+	   <div class="card">
+		  <div class="item item-divider">
+		    {{item.Name}}
+		  </div>
+		  <div ng-repeat="attribute in item.Attributes">
+			  <div class="item item-text-wrap">
+			    <dt>
+			      	{{attribute.Name}}
+			    </dt>
+			    <dd>
+			      	{{attribute.Value}}
+			    </dd>
+			  </div>
+		  </div>
+	   </div>
+	 </div>
   </ion-content>
 </ion-view>

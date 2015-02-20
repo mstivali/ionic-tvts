@@ -46,7 +46,8 @@ angular.module('starter', [
     url: "/inventory",
     views: {
       'menuContent': {
-        templateUrl: "templates/inventory.html"
+        templateUrl: "templates/inventory.html",
+        controller : 'InventoryController'
       }
     }
   })
