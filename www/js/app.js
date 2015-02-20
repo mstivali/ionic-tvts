@@ -71,7 +71,7 @@ angular.module('starter', [
   })
 
   .state('app.style-details', {
-    url: "/styles/:styleId",
+    url: "/styles/:modelId/:modelName/:styleTrim/:styleId",
     views: {
       'menuContent' : {
         templateUrl : "templates/style-details.html",
@@ -81,7 +81,7 @@ angular.module('starter', [
   })
 
   .state('app.vehicle-specs', {
-    url: "/specs/:styleId",
+    url: "/specs/:modelName/:styleTrim/:styleId",
     views: {
       'menuContent' : {
         templateUrl : "templates/vehicle-specs.html",
