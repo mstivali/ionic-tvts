@@ -56,10 +56,12 @@ angular.module('starter.controllers', [])
 
 .controller("StyleDetailController", function($scope, $http, $stateParams, $state) {
     
-    $scope.modelId = $stateParams.modelId
+    var modelId = $stateParams.modelId
     $scope.styleId = $stateParams.styleId
     $scope.modelName = $stateParams.modelName;
     $scope.styleTrim = $stateParams.styleTrim;
+
+    $scope.imageUrl = "img/cars/" + modelId + ".jpg";
 
     $scope.viewSpecs = function() {
       $state.go("app.vehicle-specs", 
