@@ -36,26 +36,26 @@
 	  <div class="item item-text-wrap">
 	    <dl ng-repeat="transmission in transmissions">
 	      <dt>Name</dt>
-	      <dd>{{transmission.name}}</dd>
+	      <dd>{{transmission.Name}}</dd>
 	      <dt>Automatic Type</dt>
-	      <dd>{{transmission.automaticType}}</dd>
+	      <dd>{{transmission.AutomaticType}}</dd>
 	      <dt>Number Of Speeds</dt>
-	      <dd>{{transmission.numberOfSpeeds}}</dd>
+	      <dd>{{transmission.NumberOfSpeeds}}</dd>
 	    </dl>
 	  </div>
    </div>
    <div ng-repeat="item in equipmentArray">
 	   <div class="card">
 		  <div class="item item-divider">
-		    {{item.name}}
+		    {{item.Name}}
 		  </div>
-		  <div ng-repeat="attribute in item.attributes">
+		  <div ng-repeat="attribute in item.Attributes">
 			  <div class="item item-text-wrap">
 			    <dt>
-			      	{{attribute.name}}
+			      	{{attribute.Name}}
 			    </dt>
 			    <dd>
-			      	{{attribute.value}}
+			      	{{attribute.Value}}
 			    </dd>
 			  </div>
 		  </div>

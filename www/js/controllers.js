@@ -63,22 +63,16 @@ angular.module('starter.controllers', [])
 
 .controller("VehicleSpecsController", function($scope, $http, $stateParams) {
 
-    $http.get('cars/4-Runner-Data.json').success(function(data) {
-       var equipmentList = data.equipment;
-       var namesArray = [];
-       for(var index in equipmentList)
-       {
-          namesArray.push(equipmentList[index].name);
-       }
-
-       $scope.equipmentArray = equipmentList;
-
-        $scope.phone = data;
-        $scope.engines = data.Engines;
-        $scope.transmissions = data.transmissions;
-        $scope.mainImageUrl = data.images[0];
-    });
-
+      $http({
+        url: 'http://tvts-api.azurewebsites.net/api/specs', 
+        method: "GET",
+        params: {styleId: $stateParams.styleId}
+      }).success(function(data){
+         $scope.engines = data.EngineDetail.Engines;
+         $scope.transmissions = data.TransmissionDetail.Transmissions;
+         $scope.equipmentArray = data.EquipmentDetail.Equipment;
+      });
+      
 });
 
 
