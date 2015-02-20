@@ -4,7 +4,10 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers', 'akoenig.deckgrid'])
+angular.module('starter', [
+  'ionic', 
+  'starter.controllers', 
+  'akoenig.deckgrid'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -68,11 +71,21 @@ angular.module('starter', ['ionic', 'starter.controllers', 'akoenig.deckgrid'])
   })
 
   .state('app.style-details', {
-    url: "/styles/:styleId",
+    url: "/styles/:modelId/:modelName/:styleTrim/:styleId",
     views: {
       'menuContent' : {
         templateUrl : "templates/style-details.html",
         controller : "StyleDetailController"
+      }
+    }
+  })
+
+  .state('app.vehicle-specs', {
+    url: "/specs/:modelName/:styleTrim/:styleId",
+    views: {
+      'menuContent' : {
+        templateUrl : "templates/vehicle-specs.html",
+        controller : "VehicleSpecsController"
       }
     }
   });

@@ -54,8 +54,42 @@ angular.module('starter.controllers', [])
 
 })
 
-.controller("StyleDetailController", function($scope, $http, $stateParams) {
-  
+.controller("StyleDetailController", function($scope, $http, $stateParams, $state) {
+    
+    var modelId = $stateParams.modelId
+    $scope.styleId = $stateParams.styleId
+    $scope.modelName = $stateParams.modelName;
+    $scope.styleTrim = $stateParams.styleTrim;
+
+    $scope.imageUrl = "img/cars/" + modelId + ".jpg";
+
+    $scope.viewSpecs = function() {
+      $state.go("app.vehicle-specs", 
+        {
+          "modelName": $stateParams.modelName, 
+          "styleTrim": $stateParams.styleTrim, 
+          "styleId": $stateParams.styleId, 
+        });
+    }
+})
+
+.controller("VehicleSpecsController", function($scope, $http, $stateParams) {
+
+      $scope.modelName = $stateParams.modelName;
+      $scope.styleTrim = $stateParams.styleTrim;
+      
+      $http({
+        url: 'http://tvts-api.azurewebsites.net/api/specs', 
+        method: "GET",
+        params: {styleId: $stateParams.styleId}
+      }).success(function(data){
+         $scope.engines = data.EngineDetail.Engines;
+         $scope.transmissions = data.TransmissionDetail.Transmissions;
+         $scope.equipmentArray = data.EquipmentDetail.Equipment;
+      });
+
 });
+
+
 
 

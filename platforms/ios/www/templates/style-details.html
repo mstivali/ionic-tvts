@@ -1,15 +1,15 @@
-<ion-view view-title="StyleDetails">
+<ion-view view-title="Style Details">
   <ion-content>
   <div class="container">
 		 <div class="row-center">
 		 	<div class="col col-50 center">
 			    <div class="list card">
 				  <div class="item item-avatar">
-				    <h2>Toyota 4 Runner</h2>
-				    <p>Limited 4dr SUV (4.0L 6cyl 5A)</p>
+				    <h2>{{"Toyota " + modelName}}</h2>
+				    <p>{{styleTrim}}</p>
 				  </div>
 				  <div class="item item-image">
-				    <img src="img/cars/4Runner-1.jpg">
+				    <img ng-src="{{imageUrl}}">
 				  </div>
 				  <a class="item item-icon-left assertive"></a>
 				</div>
@@ -17,9 +17,9 @@
 		</div>
 		<div class="row">
 			<div class="col col-50 center">
-			<button class="button button-block button-assertive">
-			  View Details
-			</button>
+				<button on-tap="viewSpecs()" class="button button-block button-assertive">
+				  View Details
+				</button>
 			<button class="button button-block button-assertive">
 				  Purchase Vehicle
 				</button>
