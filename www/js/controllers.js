@@ -54,8 +54,33 @@ angular.module('starter.controllers', [])
 
 })
 
-.controller("StyleDetailController", function($scope, $http, $stateParams) {
-  
+.controller("StyleDetailController", function($scope, $http, $stateParams, $state) {
+    
+    $scope.viewSpecs = function() {
+      $state.go("app.vehicle-specs", {"styleId": $stateParams.styleId});
+    }
+})
+
+.controller("VehicleSpecsController", function($scope, $http, $stateParams) {
+
+    $http.get('cars/4-Runner-Data.json').success(function(data) {
+       var equipmentList = data.equipment;
+       var namesArray = [];
+       for(var index in equipmentList)
+       {
+          namesArray.push(equipmentList[index].name);
+       }
+
+       $scope.equipmentArray = equipmentList;
+
+        $scope.phone = data;
+        $scope.engines = data.Engines;
+        $scope.transmissions = data.transmissions;
+        $scope.mainImageUrl = data.images[0];
+    });
+
 });
+
+
 
 
