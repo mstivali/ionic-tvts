@@ -112,16 +112,9 @@ angular.module('starter.controllers', [])
           colorsData.push(temp);
       }
 
-      alert(JSON.stringify(colorsData));
-
       $scope.colorsData = colorsData;
 
     });
-
-
-
-
-
 
     $ionicPopover.fromTemplateUrl('templates/options-popover.html', {
       scope: $scope,
@@ -155,17 +148,13 @@ angular.module('starter.controllers', [])
     });
     // Execute action on hide popover
     $scope.$on('popover.hidden', function() {
-      alert(JSON.stringify($scope.colorsData));
+      // alert(JSON.stringify($scope.colorsData));
 
     });
     // Execute action on remove popover
     $scope.$on('popover.removed', function() {
       // Execute action
     });
-
-
-
-
 
     $scope.viewSpecs = function() {
       $state.go("app.vehicle-specs", 
