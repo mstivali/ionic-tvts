@@ -54,7 +54,8 @@ angular.module('starter.controllers', [])
 
 })
 
-.controller("StyleDetailController", function($scope, $http, $stateParams, $state) {
+.controller("StyleDetailController", 
+  function($scope, $http, $stateParams, $state, $ionicPopover) {
     
     var modelId = $stateParams.modelId
     $scope.styleId = $stateParams.styleId
@@ -72,6 +73,99 @@ angular.module('starter.controllers', [])
          $scope.transmissions = data.TransmissionDetail.Transmissions;
          $scope.equipmentArray = data.EquipmentDetail.Equipment;
       });
+
+    $http({
+      url:'https://api.edmunds.com/api/vehicle/v2/styles/' 
+          + $scope.styleId + '/options',
+      method: "GET",
+      params: {fmt:'json', api_key:'27ggjjd3tthkmwh72tjgm52f'}
+    }).success(function(data) {
+      // $scope.options = data.options;
+      var options = data.options;
+
+      // alert(options[0].price.baseMSRP);
+
+      var optionsData = []
+      for(var index in options)
+      {
+          var temp = {"name":options[index].name, "selected":false};
+          optionsData.push(temp);
+      }
+
+      $scope.optionsData = optionsData;
+     
+    });
+
+    $http({
+      url:'https://api.edmunds.com/api/vehicle/v2/styles/' 
+          + $scope.styleId + '/colors',
+      method: "GET",
+      params: {fmt:'json', api_key:'27ggjjd3tthkmwh72tjgm52f', category:'Exterior'}
+    }).success(function(data) {
+      // $scope.options = data.options;
+      var colors = data.colors;
+
+      var colorsData = []
+      for(var index in colors)
+      {
+          var temp = {"name":colors[index].name, "selected":false};
+          colorsData.push(temp);
+      }
+
+      alert(JSON.stringify(colorsData));
+
+      $scope.colorsData = colorsData;
+
+    });
+
+
+
+
+
+
+    $ionicPopover.fromTemplateUrl('templates/options-popover.html', {
+      scope: $scope,
+    }).then(function(popover) {
+      $scope.popover = popover;
+    });
+
+    $scope.openPopover = function($event) {
+      $scope.popover.show($event);
+    };
+    $scope.closePopover = function() {
+      $scope.popover.hide();
+    };
+
+    $ionicPopover.fromTemplateUrl('templates/colors-popover.html', {
+      scope: $scope,
+    }).then(function(popover) {
+      $scope.colorPopover = popover;
+    })
+
+    $scope.openColorsPopover = function($event) {
+      $scope.colorPopover.show($event);
+    };
+    $scope.closeColorsPopover = function() {
+      $scope.colorPopover.hide();
+    };
+
+    //Cleanup the popover when we're done with it!
+    $scope.$on('$destroy', function() {
+      $scope.popover.remove();
+    });
+    // Execute action on hide popover
+    $scope.$on('popover.hidden', function() {
+      alert(JSON.stringify($scope.colorsData));
+
+    });
+    // Execute action on remove popover
+    $scope.$on('popover.removed', function() {
+      // Execute action
+    });
+
+
+
+
 
     $scope.viewSpecs = function() {
       $state.go("app.vehicle-specs", 
