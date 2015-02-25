@@ -79,11 +79,9 @@ angular.module('starter.controllers', [])
           + $scope.styleId + '/options',
       method: "GET",
       params: {fmt:'json', api_key:'27ggjjd3tthkmwh72tjgm52f'}
-    }).success(function(data) {
+      }).success(function(data) {
       // $scope.options = data.options;
       var options = data.options;
-
-      // alert(options[0].price.baseMSRP);
 
       var optionsData = []
       for(var index in options)
@@ -185,13 +183,6 @@ angular.module('starter.controllers', [])
 
 .controller("InventoryController", 
   function($scope, $ionicPopover, $ionicModal, $ionicPopup, $timeout) {
-
-    // .fromTemplate() method
-  // var template = '<ion-popover-view><ion-header-bar> <h1 class="title">My Popover Title</h1> </ion-header-bar> <ion-content> Hello! </ion-content></ion-popover-view>';
-
-  // $scope.popover = $ionicPopover.fromTemplate(template, {
-  //   scope: $scope,
-  // });
 
   // .fromTemplateUrl() method
   $ionicPopover.fromTemplateUrl('templates/popover-template.html', {
