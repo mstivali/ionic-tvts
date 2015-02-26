@@ -225,9 +225,45 @@ angular.module('starter.controllers', [])
       $scope.styleTrim = $stateParams.styleTrim;
       $scope.styleId = $stateParams.styleId;
 
-      alert(JSON.stringify(VehiclePurchase.getVehicleOptions()));
-      alert(JSON.stringify(VehiclePurchase.getVehicleColors()));
+      var options = VehiclePurchase.getVehicleOptions();
+      var colors = VehiclePurchase.getVehicleColors();
 
+      var processOptions = function(options) {
+
+        var selectedOptions = []
+
+        for(var index in options)
+        {
+          if(options[index].selected == true)
+          {
+            selectedOptions.push(options[index].name);
+          }
+        }
+
+        return selectedOptions;
+      }
+
+      var processColors = function(colors) {
+        var selectedColor;
+
+        for(var index in colors)
+        {
+          if(colors[index].selected == "true")
+          {
+            selectedColor = colors[index].name;
+          }
+        }
+
+        return selectedColor;
+      }
+
+      $scope.selectedOptions = processOptions(options);
+      $scope.chosenColor = processColors(colors);
+
+      $scope.confirmPurchase = function() {
+        alert("Purchase Confirmed");
+      }
+      
 })
 
 .controller("VehicleSpecsController", function($scope, $http, $stateParams) {
