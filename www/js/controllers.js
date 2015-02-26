@@ -55,12 +55,12 @@ angular.module('starter.controllers', [])
 })
 
 .controller("StyleDetailController", 
-  function($scope, $http, $stateParams, $state, $ionicPopover) {
+  function($scope, $http, $stateParams, $state, $ionicPopover, $ionicPopup, VehiclePurchase) {
     
-    var modelId = $stateParams.modelId
-    $scope.styleId = $stateParams.styleId
-    $scope.modelName = $stateParams.modelName;
+    var modelId = $stateParams.modelId;
+    $scope.styleId = $stateParams.styleId;
     $scope.styleTrim = $stateParams.styleTrim;
+    $scope.modelName = $stateParams.modelName;
 
     $scope.imageUrl = "img/cars/" + modelId + ".jpg";
 
@@ -146,7 +146,8 @@ angular.module('starter.controllers', [])
     });
     // Execute action on hide popover
     $scope.$on('popover.hidden', function() {
-      // alert(JSON.stringify($scope.colorsData));
+      VehiclePurchase.setVehicleColors($scope.colorsData);
+      VehiclePurchase.setVehicleOptions($scope.optionsData);
 
     });
     // Execute action on remove popover
@@ -158,10 +159,75 @@ angular.module('starter.controllers', [])
       $state.go("app.vehicle-specs", 
         {
           "modelName": $stateParams.modelName, 
-          "styleTrim": $stateParams.styleTrim, 
+          "styleTrim": $stateParams.styleName, 
           "styleId": $stateParams.styleId, 
         });
     }
+
+    $scope.viewSummary = function() {
+
+      var colors = VehiclePurchase.getVehicleColors();
+
+      var colorWasSelected = function(colors) {
+
+        var selected = false;
+
+        if(colors === "NONE")
+        {
+          return selected;
+        }
+        else if(colors != "NONE")
+        {
+          for(var index in colors)
+          {
+            if(colors[index].selected == "true")
+            {
+              selected = true;
+              break;
+            }
+          }
+        }
+
+        return selected;
+
+      }
+
+      if(!colorWasSelected(colors))
+      {
+         var alertPopup = $ionicPopup.alert({
+           title: 'Vehicle Color Not Selected',
+           subTitle: 'Please Select A Color',
+            scope: $scope,
+            buttons: [
+             {
+               text: '<b>Ok</b>',
+               type: 'button-assertive',
+               onTap: function() { console.log('User forgot to select a color.') }
+             }
+            ]
+           });
+      }
+      else
+      {
+         $state.go("app.confirm-purchase", {
+            "modelName" : $scope.modelName,
+            "styleTrim" : $scope.styleTrim,
+            "styleId" : $scope.styleId,
+          });
+      }
+
+    }
+})
+
+.controller("PurchaseSummaryController", function($scope, $http, $stateParams, VehiclePurchase) {
+
+      $scope.modelName = $stateParams.modelName;
+      $scope.styleTrim = $stateParams.styleTrim;
+      $scope.styleId = $stateParams.styleId;
+
+      alert(JSON.stringify(VehiclePurchase.getVehicleOptions()));
+      alert(JSON.stringify(VehiclePurchase.getVehicleColors()));
+
 })
 
 .controller("VehicleSpecsController", function($scope, $http, $stateParams) {
