@@ -1,0 +1,37 @@
+<ion-view view-title="Purchase Summary">
+  <ion-content>
+    <div class="card">
+	  <div class="item item-divider">
+	    Engine
+	  </div>
+	  <div class="item item-text-wrap">
+	    	<dl>
+	    	<div class="row">
+	    		<div class="col">
+			      <dt>Model<dt>
+			      <dd>{{modelName}}</dd>
+			    </div>
+			    <div class="col">
+			      <dt>Trim<dt>
+			      <dd>{{styleTrim}}</dd>
+			    </div>
+			    <div class="col">
+			      <dt>Color</dt>
+			      <dd>{{chosenColor}}</dd>
+			    </div>
+			    <div class="col">
+			      <dt>Options</dt>
+			      <dd ng-repeat="option in selectedOptions">
+			      	{{option}}
+			      </dd>
+			    </div>
+			</div>
+		    </dl>
+	  </div>
+   </div>
+   <div class="col col-50 center">
+		<button on-tap="confirmPurchase()" class="button button-block button-assertive">
+			  Confirm Inventory Purchase
+		</button>
+  </ion-content>
+</ion-view>

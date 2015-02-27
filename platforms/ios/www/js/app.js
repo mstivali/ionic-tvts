@@ -7,7 +7,8 @@
 angular.module('starter', [
   'ionic', 
   'starter.controllers', 
-  'akoenig.deckgrid'])
+  'akoenig.deckgrid',
+  'testService'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -72,7 +73,7 @@ angular.module('starter', [
   })
 
   .state('app.style-details', {
-    url: "/styles/:modelId/:modelName/:styleTrim/:styleId",
+    url: "/styles/:modelName/:modelId/:styleTrim/:styleId",
     views: {
       'menuContent' : {
         templateUrl : "templates/style-details.html",
@@ -82,14 +83,34 @@ angular.module('starter', [
   })
 
   .state('app.vehicle-specs', {
-    url: "/specs/:modelName/:styleTrim/:styleId",
+    url: "/specs/:modelName/:styleName/:styleId",
     views: {
       'menuContent' : {
         templateUrl : "templates/vehicle-specs.html",
         controller : "VehicleSpecsController"
       }
     }
+  })
+
+  .state('app.confirm-purchase', {
+    url:"/purchase/:modelName/:styleTrim/:styleId",
+    views: {
+      'menuContent' : {
+        templateUrl : "templates/purchase-summary.html",
+        controller : "PurchaseSummaryController"
+      }
+    }
   });
+
+  // .state('app.purchase-summary', {
+  //   url: "/purchase",
+  //   views: {
+  //     'menuContent' : {
+  //       templateUrl : "templates/purchase-summary.html",
+  //       controller : "PurchaseSummaryController"
+  //     }
+  //   }
+  // });
 
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/app/dashboard');

@@ -45,7 +45,7 @@ angular.module('starter.controllers', [])
   $scope.modelId = $stateParams.modelId;
 
   $http({
-    url: 'http://tvts-api.azurewebsites.net/api/styles', 
+    url: 'http://tvts.azurewebsites.net/api/styles', 
     method: "GET",
     params: {modelId: $stateParams.modelId}
   }).success(function(data){
@@ -65,7 +65,7 @@ angular.module('starter.controllers', [])
     $scope.imageUrl = "img/cars/" + modelId + ".jpg";
 
     $http({
-        url: 'http://tvts-api.azurewebsites.net/api/specs', 
+        url: 'http://tvts.azurewebsites.net/api/specs', 
         method: "GET",
         params: {styleId: $stateParams.styleId}
       }).success(function(data){
@@ -272,7 +272,7 @@ angular.module('starter.controllers', [])
       $scope.styleTrim = $stateParams.styleTrim;
       
       $http({
-        url: 'http://tvts-api.azurewebsites.net/api/specs', 
+        url: 'http://tvts.azurewebsites.net/api/specs', 
         method: "GET",
         params: {styleId: $stateParams.styleId}
       }).success(function(data){

@@ -1,0 +1,16 @@
+<ion-popover-view style="height: 500px;">
+    <ion-header-bar>
+      <h1 class="title">Vehicle Colors</h1>
+    </ion-header-bar>
+    <ion-content>
+    <div class="list">
+	  <label class="item item-radio" ng-repeat="color in colorsData">
+	    <input type="radio" name="group" value="true" ng-model="color.selected">
+	    <div class="item-content">
+	      {{color.name}}
+	    </div>
+	    <i class="radio-icon ion-checkmark"></i>
+	  </label>
+	</div>
+    </ion-content>
+</ion-popover-view>
