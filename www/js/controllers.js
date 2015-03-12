@@ -269,7 +269,11 @@ angular.module('starter.controllers', [])
         $http({
           url: 'http://tvts.azurewebsites.net/api/vehicle/save',
           method: "POST",
-          data: {"ModelName":"Frs", "StyleTrim":"Racing", "StyleId":"99", "Color":"Gunmetal"},
+          data: {
+            "ModelName":$scope.modelName, 
+            "StyleTrim":$scope.styleTrim, 
+            "StyleId":$scope.styleId, 
+            "Color":$scope.chosenColor},
           headers: {'Content-Type': 'application/json'},
         }).then(onSuccess, onError);
 
