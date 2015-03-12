@@ -49,6 +49,7 @@ angular.module('starter.controllers', [])
     method: "GET",
     params: {modelId: $stateParams.modelId}
   }).success(function(data){
+      // alert(JSON.stringify(data));
      $scope.styles = data.Styles;
   })
 
@@ -86,7 +87,8 @@ angular.module('starter.controllers', [])
       var optionsData = []
       for(var index in options)
       {
-          var temp = {"name":options[index].name, "selected":false};
+          var temp = {"id":options[index].id,"name":options[index].name, "selected":false};
+          // alert(JSON.stringify(temp));
           optionsData.push(temp);
       }
 
@@ -106,7 +108,7 @@ angular.module('starter.controllers', [])
       var colorsData = []
       for(var index in colors)
       {
-          var temp = {"name":colors[index].name, "selected":false};
+          var temp = {"id":colors[index].id,"name":colors[index].name, "selected":false};
           colorsData.push(temp);
       }
 
@@ -236,6 +238,7 @@ angular.module('starter.controllers', [])
         {
           if(options[index].selected == true)
           {
+            // alert(JSON.stringify(options[index]));
             selectedOptions.push(options[index].name);
           }
         }
@@ -250,6 +253,7 @@ angular.module('starter.controllers', [])
         {
           if(colors[index].selected == "true")
           {
+            // alert(JSON.stringify(colors[index]));
             selectedColor = colors[index].name;
           }
         }
@@ -261,7 +265,22 @@ angular.module('starter.controllers', [])
       $scope.chosenColor = processColors(colors);
 
       $scope.confirmPurchase = function() {
-        alert("Purchase Confirmed");
+
+        $http({
+          url: 'http://tvts.azurewebsites.net/api/vehicle/save',
+          method: "POST",
+          data: {"ModelName":"Frs", "StyleTrim":"Racing", "StyleId":"99", "Color":"Gunmetal"},
+          headers: {'Content-Type': 'application/json'},
+        }).then(onSuccess, onError);
+
+        function onSuccess(data) {
+          alert(JSON.stringify(data));
+        }
+
+        function onError(data) {
+          alert(JSON.stringify(data));
+        }
+
       }
       
 })
