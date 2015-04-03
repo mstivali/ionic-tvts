@@ -212,6 +212,7 @@ angular.module('starter.controllers', [])
       else
       {
          $state.go("app.confirm-purchase", {
+            "modelId" : modelId,
             "modelName" : $scope.modelName,
             "styleTrim" : $scope.styleTrim,
             "styleId" : $scope.styleId,
@@ -223,6 +224,8 @@ angular.module('starter.controllers', [])
 
 .controller("PurchaseSummaryController", function($scope, $http, $stateParams, VehiclePurchase) {
 
+      var modelId = $stateParams.modelId;
+      
       $scope.modelName = $stateParams.modelName;
       $scope.styleTrim = $stateParams.styleTrim;
       $scope.styleId = $stateParams.styleId;
