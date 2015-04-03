@@ -225,7 +225,7 @@ angular.module('starter.controllers', [])
 .controller("PurchaseSummaryController", function($scope, $http, $stateParams, VehiclePurchase) {
 
       var modelId = $stateParams.modelId;
-      
+
       $scope.modelName = $stateParams.modelName;
       $scope.styleTrim = $stateParams.styleTrim;
       $scope.styleId = $stateParams.styleId;
@@ -235,14 +235,15 @@ angular.module('starter.controllers', [])
 
       var processOptions = function(options) {
 
-        var selectedOptions = []
+        var selectedOptions = [];
+        var selectedOptionsObject;
 
         for(var index in options)
         {
           if(options[index].selected == true)
           {
             // alert(JSON.stringify(options[index]));
-            selectedOptions.push(options[index].name);
+            selectedOptions.push(options[index]);
           }
         }
 
@@ -257,7 +258,7 @@ angular.module('starter.controllers', [])
           if(colors[index].selected == "true")
           {
             // alert(JSON.stringify(colors[index]));
-            selectedColor = colors[index].name;
+            selectedColor = colors[index];
           }
         }
 
@@ -266,6 +267,10 @@ angular.module('starter.controllers', [])
 
       $scope.selectedOptions = processOptions(options);
       $scope.chosenColor = processColors(colors);
+
+      // alert(JSON.stringify($scope.selectedOptions));
+      // alert(JSON.stringify($scope.chosenColor));
+
 
       $scope.confirmPurchase = function() {
 
@@ -276,7 +281,7 @@ angular.module('starter.controllers', [])
             "ModelName":$scope.modelName, 
             "StyleTrim":$scope.styleTrim, 
             "StyleId":$scope.styleId, 
-            "Color":$scope.chosenColor},
+            "Color":$scope.chosenColor.name},
           headers: {'Content-Type': 'application/json'},
         }).then(onSuccess, onError);
 
