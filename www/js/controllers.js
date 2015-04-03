@@ -268,8 +268,10 @@ angular.module('starter.controllers', [])
       $scope.selectedOptions = processOptions(options);
       $scope.chosenColor = processColors(colors);
 
-      // alert(JSON.stringify($scope.selectedOptions));
-      // alert(JSON.stringify($scope.chosenColor));
+
+      // var colorObject = {"Id":$scope.chosenColor.id,"Name": $scope.chosenColor.name};
+      // colorObjectString = JSON.stringify(colorObject);
+      // alert(colorObjectString);
 
 
       $scope.confirmPurchase = function() {
@@ -278,10 +280,12 @@ angular.module('starter.controllers', [])
           url: 'http://tvts.azurewebsites.net/api/vehicle/save',
           method: "POST",
           data: {
+            "ModelIdName":modelId,
             "ModelName":$scope.modelName, 
             "StyleTrim":$scope.styleTrim, 
             "StyleId":$scope.styleId, 
-            "Color":$scope.chosenColor.name},
+            "Color":$scope.chosenColor.name
+            },
           headers: {'Content-Type': 'application/json'},
         }).then(onSuccess, onError);
 
