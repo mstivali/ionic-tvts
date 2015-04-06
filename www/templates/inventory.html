@@ -1,90 +1,11 @@
 <ion-view view-title="Inventory">
   <ion-content>
-
-	<button class="button button-primary" ng-click="openPopover($event)">Open Popover</button>
-
-	<button class="button button-primary" ng-click="openTestModal()">Open Model</button>
-
-	<button class="button button-primary" ng-click="showAlert()">Alert</button>
-
-	<button class="button button-primary" ng-click="showConfirm()">Confirm</button>
-	</br></br>
-
-	<ul class="list">
-	  <li class="item item-toggle">
-	     Turn on the Heat Outside
-	     <label class="toggle toggle-assertive">
-	       <input type="checkbox">
-	       <div class="track">
-	         <div class="handle"></div>
-	       </div>
-	     </label>
-	  </li>
-	</ul>
-	</br>
-	<ul class="list">
-	  <li class="item item-checkbox">
-	     <label class="checkbox">
-	       <input type="checkbox">
-	     </label>
-	     Flux Capacitor
-	  </li>
-	    <li class="item item-checkbox">
-	     <label class="checkbox">
-	       <input type="checkbox">
-	     </label>
-	     Delorean
-	  </li>
-	    <li class="item item-checkbox">
-	     <label class="checkbox">
-	       <input type="checkbox">
-	     </label>
-	     1.21 Jigawatts
-	  	</li>
-	</ul>
-
-	
-	<ul class="list">
-		<li>
-		  <label class="item item-radio">
-		    <input type="radio" name="group">
-		    <div class="item-content">
-		      Xbox 1
-		    </div>
-		    <i class="radio-icon ion-checkmark"></i>
-		  </label>
-		</li>
-		<li>
-	  	  <label class="item item-radio">
-		    <input type="radio" name="group">
-		    <div class="item-content">
-		      PS4
-		    </div>
-		    <i class="radio-icon ion-checkmark"></i>
-		  </label>
-	  	</li>
-	</ul>
-	</br>
-
-	<div class="range">
-	  <i class="icon ion-volume-low"></i>
-	  	<input type="range" ng-model="amount" name="volume">
-	  <i class="icon ion-volume-high"></i>
-	</div>
-	<p>{{amount + " %"}}<p/>
-
 	<div class="list">
-	  <label class="item item-input item-select">
-	    <div class="input-label">
-	      Lightsaber
-	    </div>
-	    <select>
-	      <option>Blue</option>
-	      <option selected>Green</option>
-	      <option>Red</option>
-	    </select>
-	  </label>
+	    <a ng-repeat="vehicle in vehicles" class="item item-thumbnail-left" href="#">
+	      <img ng-src="img/cars/{{vehicle.ModelIdName}}.jpg">
+	      <h2>{{vehicle.ModelName}}</h2>
+	      <p>{{vehicle.StyleTrim}}</p>
+	    </a>
 	</div>
-
   </ion-content>
 </ion-view>
