@@ -49,6 +49,7 @@ angular.module('starter.controllers', [])
     method: "GET",
     params: {modelId: $stateParams.modelId}
   }).success(function(data){
+      // alert(JSON.stringify(data));
      $scope.styles = data.Styles;
   })
 
@@ -86,7 +87,8 @@ angular.module('starter.controllers', [])
       var optionsData = []
       for(var index in options)
       {
-          var temp = {"name":options[index].name, "selected":false};
+          var temp = {"id":options[index].id,"name":options[index].name, "selected":false};
+          // alert(JSON.stringify(temp));
           optionsData.push(temp);
       }
 
@@ -106,7 +108,7 @@ angular.module('starter.controllers', [])
       var colorsData = []
       for(var index in colors)
       {
-          var temp = {"name":colors[index].name, "selected":false};
+          var temp = {"id":colors[index].id,"name":colors[index].name, "selected":false};
           colorsData.push(temp);
       }
 
@@ -210,6 +212,7 @@ angular.module('starter.controllers', [])
       else
       {
          $state.go("app.confirm-purchase", {
+            "modelId" : modelId,
             "modelName" : $scope.modelName,
             "styleTrim" : $scope.styleTrim,
             "styleId" : $scope.styleId,
@@ -221,6 +224,8 @@ angular.module('starter.controllers', [])
 
 .controller("PurchaseSummaryController", function($scope, $http, $stateParams, VehiclePurchase) {
 
+      var modelId = $stateParams.modelId;
+
       $scope.modelName = $stateParams.modelName;
       $scope.styleTrim = $stateParams.styleTrim;
       $scope.styleId = $stateParams.styleId;
@@ -230,13 +235,15 @@ angular.module('starter.controllers', [])
 
       var processOptions = function(options) {
 
-        var selectedOptions = []
+        var selectedOptions = [];
+        var selectedOptionsObject;
 
         for(var index in options)
         {
           if(options[index].selected == true)
           {
-            selectedOptions.push(options[index].name);
+            // alert(JSON.stringify(options[index]));
+            selectedOptions.push(options[index]);
           }
         }
 
@@ -250,7 +257,8 @@ angular.module('starter.controllers', [])
         {
           if(colors[index].selected == "true")
           {
-            selectedColor = colors[index].name;
+            // alert(JSON.stringify(colors[index]));
+            selectedColor = colors[index];
           }
         }
 
@@ -260,8 +268,35 @@ angular.module('starter.controllers', [])
       $scope.selectedOptions = processOptions(options);
       $scope.chosenColor = processColors(colors);
 
+
+      // var colorObject = {"Id":$scope.chosenColor.id,"Name": $scope.chosenColor.name};
+      // colorObjectString = JSON.stringify(colorObject);
+      // alert(colorObjectString);
+
+
       $scope.confirmPurchase = function() {
-        alert("Purchase Confirmed");
+
+        $http({
+          url: 'http://tvts.azurewebsites.net/api/vehicle/save',
+          method: "POST",
+          data: {
+            "ModelIdName":modelId,
+            "ModelName":$scope.modelName, 
+            "StyleTrim":$scope.styleTrim, 
+            "StyleId":$scope.styleId, 
+            "Color":$scope.chosenColor.name
+            },
+          headers: {'Content-Type': 'application/json'},
+        }).then(onSuccess, onError);
+
+        function onSuccess(data) {
+          alert(JSON.stringify(data));
+        }
+
+        function onError(data) {
+          alert(JSON.stringify(data));
+        }
+
       }
       
 })
@@ -284,88 +319,14 @@ angular.module('starter.controllers', [])
 })
 
 .controller("InventoryController", 
-  function($scope, $ionicPopover, $ionicModal, $ionicPopup, $timeout) {
+  function($scope, $http, $ionicPopover, $ionicModal, $ionicPopup, $timeout) {
 
-  // .fromTemplateUrl() method
-  $ionicPopover.fromTemplateUrl('templates/popover-template.html', {
-    scope: $scope,
-  }).then(function(popover) {
-    $scope.popover = popover;
-  });
-
-
-  $scope.openPopover = function($event) {
-    $scope.popover.show($event);
-  };
-  $scope.closePopover = function() {
-    $scope.popover.hide();
-  };
-  //Cleanup the popover when we're done with it!
-  $scope.$on('$destroy', function() {
-    $scope.popover.remove();
-  });
-  // Execute action on hide popover
-  $scope.$on('popover.hidden', function() {
-    // Execute action
-  });
-  // Execute action on remove popover
-  $scope.$on('popover.removed', function() {
-    // Execute action
-  });
-
-  //modal
-  $ionicModal.fromTemplateUrl('templates/modal-template.html', {
-    scope: $scope,
-    animation: 'slide-in-up'
-  }).then(function(modal) {
-    $scope.modal = modal;
-  });
-
-  $scope.openTestModal = function() {
-    $scope.modal.show();
-  };
-  $scope.closeTestModal = function() {
-    $scope.modal.hide();
-  };
-  //Cleanup the modal when we're done with it!
-  $scope.$on('$destroy', function() {
-    $scope.modal.remove();
-  });
-  // Execute action on hide modal
-  $scope.$on('modal.hidden', function() {
-    // Execute action
-  });
-  // Execute action on remove modal
-  $scope.$on('modal.removed', function() {
-    // Execute action
-  });
-
-
-  //popup
-  $scope.showConfirm = function() {
-   var confirmPopup = $ionicPopup.confirm({
-     title: 'Consume Ice Cream',
-     template: 'Are you sure you want to eat this ice cream?'
-   });
-   confirmPopup.then(function(res) {
-     if(res) {
-       console.log('You are sure');
-     } else {
-       console.log('You are not sure');
-     }
-   });
- };
-
-  $scope.showAlert = function() {
-   var alertPopup = $ionicPopup.alert({
-     title: 'Don\'t eat that!',
-     template: 'It might taste good'
-   });
-   alertPopup.then(function(res) {
-     console.log('Thank you for not eating my delicious ice cream cone');
-   });
- };
-
+      $http({
+        url: 'http://tvts.azurewebsites.net/api/vehicles', 
+        method: "GET",
+      }).success(function(data){
+         $scope.vehicles = data;
+      });
 });
 
 

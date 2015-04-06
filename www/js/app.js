@@ -102,15 +102,7 @@ angular.module('starter', [
     }
   });
 
-  // .state('app.purchase-summary', {
-  //   url: "/purchase",
-  //   views: {
-  //     'menuContent' : {
-  //       templateUrl : "templates/purchase-summary.html",
-  //       controller : "PurchaseSummaryController"
-  //     }
-  //   }
-  // });
+
 
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/app/dashboard');

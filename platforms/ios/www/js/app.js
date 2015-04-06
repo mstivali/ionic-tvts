@@ -93,7 +93,7 @@ angular.module('starter', [
   })
 
   .state('app.confirm-purchase', {
-    url:"/purchase/:modelName/:styleTrim/:styleId",
+    url:"/purchase/:modelId/:modelName/:styleTrim/:styleId",
     views: {
       'menuContent' : {
         templateUrl : "templates/purchase-summary.html",

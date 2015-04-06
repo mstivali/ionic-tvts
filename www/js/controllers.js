@@ -222,7 +222,7 @@ angular.module('starter.controllers', [])
     }
 })
 
-.controller("PurchaseSummaryController", function($scope, $http, $stateParams, VehiclePurchase) {
+.controller("PurchaseSummaryController", function($scope, $http, $state, $ionicPopup, $stateParams, VehiclePurchase) {
 
       var modelId = $stateParams.modelId;
 
@@ -290,11 +290,35 @@ angular.module('starter.controllers', [])
         }).then(onSuccess, onError);
 
         function onSuccess(data) {
-          alert(JSON.stringify(data));
+         var alertPopup = $ionicPopup.alert({
+           title: 'Success',
+           subTitle: 'Vehicle added to inventory',
+            scope: $scope,
+            buttons: [
+             {
+               text: '<b>Ok</b>',
+               type: 'button-assertive',
+               onTap: function() { $state.go("app.inventory"); }
+             }
+            ]
+           });
+
+          
         }
 
         function onError(data) {
-          alert(JSON.stringify(data));
+          var alertPopup = $ionicPopup.alert({
+           title: 'Failure',
+           subTitle: 'An error occurred',
+            scope: $scope,
+            buttons: [
+             {
+               text: '<b>Ok</b>',
+               type: 'button-assertive',
+               onTap: function() { console.log('User forgot to select a color.') }
+             }
+            ]
+           });
         }
 
       }
