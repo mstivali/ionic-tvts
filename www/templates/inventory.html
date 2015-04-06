@@ -1,7 +1,15 @@
 <ion-view view-title="Inventory">
   <ion-content>
+
+  	 <div class="list list-inset">
+	  <label class="item item-input">
+	    <i class="icon ion-search placeholder-icon"></i>
+	    <input type="text" placeholder="Search For Model Name" ng-model="query">
+	  </label>
+	</div>
+
 	<div class="list">
-	    <a ng-repeat="vehicle in vehicles" class="item item-thumbnail-left" href="#">
+	    <a ng-repeat="vehicle in vehicles | filter:query" class="item item-thumbnail-left" href="#">
 	      <img ng-src="img/cars/{{vehicle.ModelIdName}}.jpg">
 	      <h2>{{vehicle.ModelName}}</h2>
 	      <p>{{vehicle.StyleTrim}}</p>
