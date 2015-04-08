@@ -8,8 +8,8 @@
 	  </label>
 	</div>
 
-	<div class="list">
-	    <a ng-repeat="vehicle in vehicles | filter:query" class="item item-thumbnail-left" href="#">
+	<div class="list" ng-repeat="vehicle in vehicles | filter:query">
+	    <a class="item item-thumbnail-left" href="#/app/specs/{{vehicle.ModelName}}/{{vehicle.StyleTrim}}/{{vehicle.StyleId}}">
 	      <img ng-src="img/cars/{{vehicle.ModelIdName}}.jpg">
 	      <h2>{{vehicle.ModelName}}</h2>
 	      <p>{{vehicle.StyleTrim}}</p>

@@ -83,7 +83,7 @@ angular.module('starter', [
   })
 
   .state('app.vehicle-specs', {
-    url: "/specs/:modelName/:styleName/:styleId",
+    url: "/specs/:ModelName/:StyleTrim/:StyleId",
     views: {
       'menuContent' : {
         templateUrl : "templates/vehicle-specs.html",
@@ -105,5 +105,5 @@ angular.module('starter', [
 
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/dashboard');
+  $urlRouterProvider.otherwise('/app/models');
 });

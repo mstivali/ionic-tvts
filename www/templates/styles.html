@@ -11,8 +11,9 @@
 	  </label>
 	</div>
 
+
     <div ng-repeat="style in styles | filter:query | orderBy:orderProp" class="card">
-	    <ion-item href="#/app/styles/{{style.Submodel.ModelName}}/{{modelId}}/{{style.Trim}}/{{style.Id}}">
+	    <a class="item" href="#/app/styles/{{style.Submodel.ModelName}}/{{modelId}}/{{style.Trim}}/{{style.Id}}">
 		  <div class="item item-divider">
 		    {{style.Name}}
 		  </div>
@@ -20,7 +21,7 @@
 		    Model: {{style.Submodel.ModelName}}</br>
 		    Trim: {{style.Trim}}
 		  </div>
-		</ion-item>
+		</a>
 	</div>
   </ion-content>
 </ion-view>
