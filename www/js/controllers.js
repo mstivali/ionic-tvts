@@ -360,6 +360,12 @@ angular.module('starter.controllers', [])
          $scope.vehicles = data;
          // alert(JSON.stringify(data));
       });
+})
+
+.controller("SalesController",  function($scope, $http, $stateParams) {
+
+  alert("test");
+
 });
 
 
