@@ -110,6 +110,16 @@ angular.module('starter', [
         controller : "SalesController"
       }
     }
+  })
+
+  .state('app.customer-registration', {
+    url:"/registration",
+    views: {
+      'menuContent' : {
+        templateUrl : "templates/customer-registration.html",
+        controller : "CustomerRegistration"
+      }
+    }
   });
 
 

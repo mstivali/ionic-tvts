@@ -364,9 +364,15 @@ angular.module('starter.controllers', [])
 
 .controller("SalesController",  function($scope, $http, $stateParams) {
 
-  alert("test");
+  
+
+})
+
+.controller("CustomerRegistration",  function($scope, $http, $stateParams) {
 
 });
+
+
 
 
 

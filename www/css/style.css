@@ -46,10 +46,3 @@ ul.specs > li > span{
 ul.specs dt {
   font-weight: bold;
 }
-
-.center {
-    margin-left: auto;
-    margin-right: auto;
-    width: 70%;
-    vertical-align: center;
-}
