@@ -1,40 +1,38 @@
 <ion-view view-title="Customer Registration">
   <ion-content>
-  <div class="container">
-  <br><br><br><br>
-  <div class="row">
-  	<div class="col">
-		<div class="list">
-		  <label class="item item-input">
-		    <input type="text" ng-model="name" placeholder="First Name">
-		  </label>
-		  <label class="item item-input">
-		    <input type="text" placeholder="Last Name">
-		  </label>
-		   <label class="item item-input">
-		    <input type="text" placeholder="Phone Number">
-		  </label>
-		  <label class="item item-input">
-		    <input type="text" placeholder="Street">
-		  </label>
-		  <label class="item item-input">
-		    <input type="text" placeholder="City">
-		  </label>
-		  <label class="item item-input">
-		    <input type="text" placeholder="State">
-		  </label>
-		  <label class="item item-input">
-		    <input type="text" placeholder="Zip">
-		  </label>
-		  <label class="item item-input">
-		    <textarea placeholder="Comments"></textarea>
-		  </label>
-		  <button ng-click="register()" class="button button-block button-assertive">
-		  	Register
-		  </button>
-		</div>
-	</div>
-</div>
-</div>
+	  <div class="container">
+	  	<br><br><br><br>
+		  <div class="row">
+		  	<div class="col">
+		      <form>
+			      <label class="item item-input">
+					    <input type="text" ng-model="user.firstName" placeholder="First Name">
+				  </label>
+				  <label class="item item-input">
+					    <input type="text" ng-model="user.lastName" placeholder="Last Name">
+					  </label>
+					   <label class="item item-input">
+					    <input type="text" ng-model="user.phone" placeholder="Phone Number">
+					  </label>
+					  <label class="item item-input">
+					    <input type="text" ng-model="user.street" placeholder="Street">
+					  </label>
+					  <label class="item item-input">
+					    <input type="text" ng-model="user.city" placeholder="City">
+					  </label>
+					  <label class="item item-input">
+					    <input type="text" ng-model="user.state" placeholder="State">
+					  </label>
+					  <label class="item item-input">
+					    <input type="text" ng-model="user.zip" placeholder="Zip">
+					  </label>
+			    <button type="submit" class="button button-block button-assertive" ng-click="register(user)">Register</button>
+			       <button class="button button-block button-assertive" ng-click="reset()">Clear</button>
+			  </form>
+			</div> <!--col-->
+		</div><!--row-->
+	</div><!--container-->
+<!-- 	  <pre>form = {{user | json}}</pre>
+	  <pre>master = {{master | json}}</pre> -->
   </ion-content>
 </ion-view>

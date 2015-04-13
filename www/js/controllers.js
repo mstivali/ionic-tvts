@@ -370,9 +370,20 @@ angular.module('starter.controllers', [])
 
 .controller("CustomerRegistration",  function($scope, $http, $stateParams) {
     
-    $scope.register = function() {
-      alert($scope.name);
-    }    
+    $scope.master = {};
+
+      $scope.register = function(user) {
+        $scope.master = angular.copy(user);
+
+        alert(JSON.stringify($scope.master));
+      };
+
+      $scope.reset = function() {
+        $scope.user = {};
+        $scope.master = {};
+      };
+
+      $scope.reset();
 
 });
 
