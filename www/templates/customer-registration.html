@@ -4,30 +4,42 @@
 	  	<br><br><br><br>
 		  <div class="row">
 		  	<div class="col">
-		      <form>
-			      <label class="item item-input">
-					    <input type="text" ng-model="user.firstName" placeholder="First Name">
-				  </label>
-				  <label class="item item-input">
-					    <input type="text" ng-model="user.lastName" placeholder="Last Name">
-					  </label>
-					   <label class="item item-input">
-					    <input type="text" ng-model="user.phone" placeholder="Phone Number">
-					  </label>
-					  <label class="item item-input">
-					    <input type="text" ng-model="user.street" placeholder="Street">
-					  </label>
-					  <label class="item item-input">
-					    <input type="text" ng-model="user.city" placeholder="City">
-					  </label>
-					  <label class="item item-input">
-					    <input type="text" ng-model="user.state" placeholder="State">
-					  </label>
-					  <label class="item item-input">
-					    <input type="text" ng-model="user.zip" placeholder="Zip">
-					  </label>
-			    <button type="submit" class="button button-block button-assertive" ng-click="register(user)">Register</button>
-			       <button class="button button-block button-assertive" ng-click="reset()">Clear</button>
+		      <form name="form" ng-submit="submitForm(user)">
+			     <label class="item item-input">
+					   <input type="text" ng-model="user.firstName" placeholder="First Name" name="uFirstName" required=""/>
+				 </label>
+				 <div ng-show="form.$submitted || form.uFirstName.$touched">
+				      <div ng-show="form.uFirstName.$error.required">
+				      	<span class="item item-input">Please enter the customer's first name.</span>
+				      </div>
+				 </div>
+				 <label class="item item-input">
+					    <input type="text" ng-model="user.lastName" placeholder="Last Name" name="uLastName" required=""/>
+				 </label>
+				 <div ng-show="form.$submitted || form.uLastName.$touched">
+				      <div ng-show="form.uLastName.$error.required">
+				      	<span class="item item-input">Please enter the customer's last name.</span>
+				      </div>
+				 </div>
+			     <label class="item item-input">
+					    <input type="text" ng-model="user.phone" placeholder="Phone Number" name="uPhone" required="">
+				 </label>
+			     <div ng-show="form.$submitted || form.uPhone.$touched">
+				      <div ng-show="form.uPhone.$error.required">
+				      	<span class="item item-input">Please enter the customer's phone number.</span>
+				      </div>
+				 </div>
+				 <label class="item item-input">
+					    <input type="email" ng-model="user.email" placeholder="Email" name="uEmail" required=""/>
+				 </label>
+		 	     <div ng-show="form.$submitted || form.uEmail.$touched">
+		 	     	<span class="item item-input" ng-show="form.uEmail.$error.email">This is not a valid email.</span>
+			      <span class="item item-input" ng-show="form.uEmail.$error.required">Please enter the customers email.<span>
+			      
+			     </div>
+			     <input type="submit" class="button button-block button-assertive" value="Register"/>
+			   <!--  <input type="submit" ng-show="!form.uEmail.$error.email" class="button button-block button-assertive" ng-click="register(user)" value="Register"/> -->
+	<!-- 		       <button class="button button-block button-assertive" ng-click="reset()">Clear</button> -->
 			  </form>
 			</div> <!--col-->
 		</div><!--row-->

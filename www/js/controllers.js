@@ -385,6 +385,12 @@ angular.module('starter.controllers', [])
 
       $scope.reset();
 
+      $scope.submitForm = function(user) {
+         $scope.master = angular.copy(user);
+
+        alert(JSON.stringify($scope.master));
+      }
+
 });
 
 
