@@ -83,7 +83,7 @@ angular.module('starter', [
   })
 
   .state('app.vehicle-specs', {
-    url: "/specs/:modelName/:styleName/:styleId",
+    url: "/specs/:ModelName/:StyleTrim/:StyleId",
     views: {
       'menuContent' : {
         templateUrl : "templates/vehicle-specs.html",
@@ -100,10 +100,30 @@ angular.module('starter', [
         controller : "PurchaseSummaryController"
       }
     }
+  })
+
+  .state('app.sales', {
+    url:"/sales",
+    views: {
+      'menuContent' : {
+        templateUrl : "templates/sales.html",
+        controller : "SalesController"
+      }
+    }
+  })
+
+  .state('app.customer-registration', {
+    url:"/registration",
+    views: {
+      'menuContent' : {
+        templateUrl : "templates/customer-registration.html",
+        controller : "CustomerRegistration"
+      }
+    }
   });
 
 
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/dashboard');
+  $urlRouterProvider.otherwise('/app/models');
 });

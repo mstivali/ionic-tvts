@@ -369,6 +369,10 @@ angular.module('starter.controllers', [])
 })
 
 .controller("CustomerRegistration",  function($scope, $http, $stateParams) {
+    
+    $scope.register = function() {
+      alert($scope.name);
+    }    
 
 });
 

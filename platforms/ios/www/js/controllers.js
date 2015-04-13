@@ -35,9 +35,17 @@ angular.module('starter.controllers', [])
 
 .controller('ModelsController', function($scope, $http) {
 
-  $http.get('cars/cars.json').success(function(data) {
-      $scope.models = data;
-    });
+  // $http.get('cars/cars.json').success(function(data) {
+  //     $scope.models = data;
+  //   });
+
+  $http({
+    url: 'http://tvts.azurewebsites.net/api/cars', 
+    method: "GET",
+  }).success(function(data){
+     $scope.models = data;
+  })
+
 })
 
 .controller('StylesController', function($scope, $http, $stateParams) {
@@ -327,13 +335,13 @@ angular.module('starter.controllers', [])
 
 .controller("VehicleSpecsController", function($scope, $http, $stateParams) {
 
-      $scope.modelName = $stateParams.modelName;
-      $scope.styleTrim = $stateParams.styleTrim;
+      $scope.modelName = $stateParams.ModelName;
+      $scope.styleTrim = $stateParams.StyleTrim;
       
       $http({
         url: 'http://tvts.azurewebsites.net/api/specs', 
         method: "GET",
-        params: {styleId: $stateParams.styleId}
+        params: {styleId: $stateParams.StyleId}
       }).success(function(data){
          $scope.engines = data.EngineDetail.Engines;
          $scope.transmissions = data.TransmissionDetail.Transmissions;
@@ -350,8 +358,21 @@ angular.module('starter.controllers', [])
         method: "GET",
       }).success(function(data){
          $scope.vehicles = data;
+         // alert(JSON.stringify(data));
       });
+})
+
+.controller("SalesController",  function($scope, $http, $stateParams) {
+
+  
+
+})
+
+.controller("CustomerRegistration",  function($scope, $http, $stateParams) {
+
 });
+
+
 
 
 
