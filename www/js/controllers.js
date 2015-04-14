@@ -368,14 +368,13 @@ angular.module('starter.controllers', [])
 
 })
 
-.controller("CustomerRegistration",  function($scope, $http, $stateParams) {
+.controller("CustomerRegistration",  function($scope, $http, $ionicPopup, $stateParams) {
     
     $scope.master = {};
 
       $scope.register = function(user) {
         $scope.master = angular.copy(user);
 
-        alert(JSON.stringify($scope.master));
       };
 
       $scope.reset = function() {
@@ -388,8 +387,49 @@ angular.module('starter.controllers', [])
       $scope.submitForm = function(user) {
          $scope.master = angular.copy(user);
 
-        alert(JSON.stringify($scope.master));
-      }
+        $http({
+          url: 'http://tvts.azurewebsites.net/api/customer/save',
+          method: "POST",
+          data: {
+            "Firstname":$scope.master.firstName,
+            "Lastname":$scope.master.lastName, 
+            "Phone":$scope.master.phone, 
+            "Email":$scope.master.email
+            },
+          headers: {'Content-Type': 'application/json'},
+        }).then(onSuccess, onError);
+
+        function onSuccess(data) {
+         var alertPopup = $ionicPopup.alert({
+           title: 'Success',
+           subTitle: 'Customer Registered',
+            scope: $scope,
+            buttons: [
+             {
+               text: '<b>Ok</b>',
+               type: 'button-assertive',
+               onTap: function() { }
+             }
+            ]
+           }); 
+        }
+
+        function onError(data) {
+          var alertPopup = $ionicPopup.alert({
+           title: 'Failure',
+           subTitle: 'An error occurred',
+            scope: $scope,
+            buttons: [
+             {
+               text: '<b>Ok</b>',
+               type: 'button-assertive',
+               onTap: function() { }
+             }
+            ]
+           });
+        }
+
+      };
 
 });
 
