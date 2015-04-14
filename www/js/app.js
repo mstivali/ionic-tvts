@@ -120,6 +120,16 @@ angular.module('starter', [
         controller : "CustomerRegistration"
       }
     }
+  })
+
+  .state('app.customers-list', {
+    url:"/customers",
+    views: {
+      'menuContent' : {
+        templateUrl : "templates/customers.html",
+        controller : "CustomersController"
+      }
+    }
   });
 
 

@@ -431,7 +431,19 @@ angular.module('starter.controllers', [])
 
       };
 
+})
+
+.controller("CustomersController",  function($scope, $http, $ionicPopup, $stateParams) {
+
+    $http({
+        url: 'http://tvts.azurewebsites.net/api/customers', 
+        method: "GET",
+      }).success(function(data){
+         $scope.customers = data;
+      });
+
 });
+
 
 
 
