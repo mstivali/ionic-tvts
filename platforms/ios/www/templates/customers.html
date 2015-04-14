@@ -1,0 +1,20 @@
+<ion-view view-title="Customers">
+  <ion-content>
+
+  	 <div class="list list-inset">
+	  <label class="item item-input">
+	    <i class="icon ion-search placeholder-icon"></i>
+	    <input type="text" placeholder="Search" ng-model="query">
+	  </label>
+	</div>
+
+	<div class="list" ng-repeat="customer in customers | filter:query">
+	    <a class="item item-thumbnail-left" href="">
+	      <img ng-src="img/userFlat.png">
+	      <h2>{{customer.Firstname + " " + customer.Lastname}}</h2>
+	      <p>{{customer.Phone}}</p>
+	      <p>{{customer.Email}}</p>
+	    </a>
+	</div>
+  </ion-content>
+</ion-view>

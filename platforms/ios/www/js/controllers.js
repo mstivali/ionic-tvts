@@ -368,9 +368,82 @@ angular.module('starter.controllers', [])
 
 })
 
-.controller("CustomerRegistration",  function($scope, $http, $stateParams) {
+.controller("CustomerRegistration",  function($scope, $http, $ionicPopup, $stateParams) {
+    
+    $scope.master = {};
+
+      $scope.register = function(user) {
+        $scope.master = angular.copy(user);
+
+      };
+
+      $scope.reset = function() {
+        $scope.user = {};
+        $scope.master = {};
+      };
+
+      $scope.reset();
+
+      $scope.submitForm = function(user) {
+         $scope.master = angular.copy(user);
+
+        $http({
+          url: 'http://tvts.azurewebsites.net/api/customer/save',
+          method: "POST",
+          data: {
+            "Firstname":$scope.master.firstName,
+            "Lastname":$scope.master.lastName, 
+            "Phone":$scope.master.phone, 
+            "Email":$scope.master.email
+            },
+          headers: {'Content-Type': 'application/json'},
+        }).then(onSuccess, onError);
+
+        function onSuccess(data) {
+         var alertPopup = $ionicPopup.alert({
+           title: 'Success',
+           subTitle: 'Customer Registered',
+            scope: $scope,
+            buttons: [
+             {
+               text: '<b>Ok</b>',
+               type: 'button-assertive',
+               onTap: function() { }
+             }
+            ]
+           }); 
+        }
+
+        function onError(data) {
+          var alertPopup = $ionicPopup.alert({
+           title: 'Failure',
+           subTitle: 'An error occurred',
+            scope: $scope,
+            buttons: [
+             {
+               text: '<b>Ok</b>',
+               type: 'button-assertive',
+               onTap: function() { }
+             }
+            ]
+           });
+        }
+
+      };
+
+})
+
+.controller("CustomersController",  function($scope, $http, $ionicPopup, $stateParams) {
+
+    $http({
+        url: 'http://tvts.azurewebsites.net/api/customers', 
+        method: "GET",
+      }).success(function(data){
+         $scope.customers = data;
+      });
 
 });
+
 
 
 
