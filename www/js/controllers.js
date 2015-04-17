@@ -435,6 +435,8 @@ angular.module('starter.controllers', [])
 
 .controller("CustomersController",  function($scope, $http, $ionicPopup, $stateParams) {
 
+    $scope.mode = $stateParams.mode;
+
     $http({
         url: 'http://tvts.azurewebsites.net/api/customers', 
         method: "GET",
@@ -444,13 +446,22 @@ angular.module('starter.controllers', [])
 
 })
 
-.controller("CustomerPurchaseController",  function($scope, $http, $ionicPopup, $ionicPopover, $stateParams) {
+.controller("CustomerDetailController",  function($scope, $http, $ionicPopup, $ionicPopover, $stateParams) {
 
     var customerId = $stateParams.customerId;
     $scope.firstname  = $stateParams.firstname;
     $scope.lastname = $stateParams.lastname;
     $scope.phone = $stateParams.phone;
     $scope.email = $stateParams.email;
+    
+    if($stateParams.mode == "master")
+    {
+      $scope.puchasingState = false;
+    }
+    else
+    {
+      $scope.purchasingState = true;
+    }
 
     $http({
         url: 'http://tvts.azurewebsites.net/api/vehicles', 

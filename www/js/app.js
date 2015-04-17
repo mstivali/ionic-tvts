@@ -123,7 +123,7 @@ angular.module('starter', [
   })
 
   .state('app.customers-list', {
-    url:"/customers",
+    url:"/customers/:mode",
     views: {
       'menuContent' : {
         templateUrl : "templates/customers.html",
@@ -132,12 +132,12 @@ angular.module('starter', [
     }
   })
 
-  .state('app.customers-purchase', {
-    url:"/customers/:customerId/:firstname/:lastname/:phone/:email",
+  .state('app.customers-detail', {
+    url:"/customers/:customerId/:firstname/:lastname/:phone/:email/:mode",
     views: {
       'menuContent' : {
-        templateUrl : "templates/customer-purchase.html",
-        controller : "CustomerPurchaseController"
+        templateUrl : "templates/customer-detail.html",
+        controller : "CustomerDetailController"
       }
     }
   });

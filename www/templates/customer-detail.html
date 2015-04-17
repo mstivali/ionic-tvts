@@ -25,13 +25,13 @@
 				<!-- <button on-tap="viewSpecs()" class="button button-block button-assertive">
 				  View Details
 				</button> -->
-			<button ng-click="openPopover($event)" class="button button-block button-assertive">
+			<button ng-show={{purchasingState}} ng-click="openPopover($event)" class="button button-block button-assertive">
 				  Select Vehicle
 			</button>
 <!-- 			<button ng-click="openColorsPopover($event)" class="button button-block button-assertive">
 				  Choose Vehicle Color
 			</button> -->
-			<button on-tap="purchaseVehicle()" class="button button-block button-assertive">
+			<button ng-show={{purchasingState}} on-tap="purchaseVehicle()" class="button button-block button-assertive">
 				  Process Purchase
 			</button>
 			</div>
