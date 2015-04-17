@@ -132,12 +132,12 @@ angular.module('starter', [
     }
   })
 
-  .state('app.customers-detail', {
+  .state('app.customers-purchase', {
     url:"/customers/:customerId/:firstname/:lastname/:phone/:email",
     views: {
       'menuContent' : {
-        templateUrl : "templates/customer-detail.html",
-        controller : "CustomerDetailController"
+        templateUrl : "templates/customer-purchase.html",
+        controller : "CustomerPurchaseController"
       }
     }
   });

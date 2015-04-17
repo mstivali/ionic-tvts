@@ -444,7 +444,7 @@ angular.module('starter.controllers', [])
 
 })
 
-.controller("CustomerDetailController",  function($scope, $http, $ionicPopup, $ionicPopover, $stateParams) {
+.controller("CustomerPurchaseController",  function($scope, $http, $ionicPopup, $ionicPopover, $stateParams) {
 
     var customerId = $stateParams.customerId;
     $scope.firstname  = $stateParams.firstname;
