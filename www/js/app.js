@@ -130,6 +130,16 @@ angular.module('starter', [
         controller : "CustomersController"
       }
     }
+  })
+
+  .state('app.customers-detail', {
+    url:"/customers/:customerId/:firstname/:lastname/:phone/:email",
+    views: {
+      'menuContent' : {
+        templateUrl : "templates/customer-detail.html",
+        controller : "CustomerDetailController"
+      }
+    }
   });
 
 

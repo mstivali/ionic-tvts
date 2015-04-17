@@ -1,0 +1,41 @@
+<ion-view view-title="Customer Detail">
+  <ion-content>
+
+  	<br><br><br><br>
+    <div class="container">
+		 <div class="row-center">
+		 	<div class="col col-50 center">
+			    <div class="list card">
+				  <div class="item item-avatar">
+				  	<img ng-src="img/userFlat.png">
+				    <h2>{{firstname}} {{lastname}}</h2>
+				    <p>{{phone}}</p>
+				    <p>{{email}}</p>
+				  </div>
+				  <div class="item item-image">
+				    
+				  </div>
+				  <a class="item item-icon-left assertive"></a>
+				</div>
+			</div>
+		</div>
+		<br><br><br><br>
+		<div class="row">
+			<div class="col col-50 center">
+				<!-- <button on-tap="viewSpecs()" class="button button-block button-assertive">
+				  View Details
+				</button> -->
+			<button ng-click="openPopover($event)" class="button button-block button-assertive">
+				  Select Vehicle
+			</button>
+<!-- 			<button ng-click="openColorsPopover($event)" class="button button-block button-assertive">
+				  Choose Vehicle Color
+			</button> -->
+			<button on-tap="purchaseVehicle()" class="button button-block button-assertive">
+				  Process Purchase
+			</button>
+			</div>
+		</div>
+	</div>
+  </ion-content>
+</ion-view>

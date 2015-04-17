@@ -1,0 +1,21 @@
+<ion-popover-view style="height: 500px;">
+    <ion-header-bar>
+      <h1 class="title">Vehicle Inventory</h1>
+    </ion-header-bar>
+    <ion-content>
+    <div class="list">
+	  <label class="item item-radio" ng-repeat="vehicle in vehiclesData">
+	    <input type="radio" name="group" value="true" ng-model="vehicle.Selected">
+	    <div class="item-content">
+		    <a class="item item-thumbnail-left">
+		      <img ng-src="img/cars/{{vehicle.ModelIdName}}.jpg">
+		      <h2>{{vehicle.ModelName}}</h2>
+		      <p>{{vehicle.StyleTrim}}</p>
+		      <p>{{vehicle.Color}}</p>
+		    </a>
+	    </div>
+	    <i class="radio-icon ion-checkmark"></i>
+	  </label>
+	</div>
+    </ion-content>
+</ion-popover-view>

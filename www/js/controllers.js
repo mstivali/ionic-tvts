@@ -442,6 +442,137 @@ angular.module('starter.controllers', [])
          $scope.customers = data;
       });
 
+})
+
+.controller("CustomerDetailController",  function($scope, $http, $ionicPopup, $ionicPopover, $stateParams) {
+
+    var customerId = $stateParams.customerId;
+    $scope.firstname  = $stateParams.firstname;
+    $scope.lastname = $stateParams.lastname;
+    $scope.phone = $stateParams.phone;
+    $scope.email = $stateParams.email;
+
+    $http({
+        url: 'http://tvts.azurewebsites.net/api/vehicles', 
+        method: "GET",
+      }).success(function(data){
+         var vehicles = data;
+         // alert(JSON.stringify(data));
+
+         var vehiclesData = []
+        for(var index in vehicles)
+        {
+            var temp = {
+                          "Selected":false,
+                          "Id":vehicles[index].Id,
+                          "ModelName":vehicles[index].ModelName, 
+                          "StyleTrim":vehicles[index].StyleTrim,
+                          "Color":vehicles[index].Color
+                       };
+
+            vehiclesData.push(temp);
+        }
+
+        $scope.vehiclesData = vehiclesData;
+
+      });
+
+    $scope.purchaseVehicle = function() {
+
+      var processVehicles = function(vehicles) {
+
+
+        var selectedVehicle;
+
+        for(var index in vehicles)
+        {
+          if(vehicles[index].Selected == "true")
+          {
+            // alert(JSON.stringify(colors[index]));
+            selectedVehicle = vehicles[index];
+          }
+        }
+
+        return selectedVehicle;
+
+       }
+
+       var selectedVehicle = processVehicles($scope.vehiclesData);
+
+       alert(customerId);
+       alert(selectedVehicle.Id);
+
+      $http({
+          url: 'http://tvts.azurewebsites.net/api/vehicle/purchase',
+          method: "PUT",
+          data: {
+            "CustomerId":customerId,
+            "InventoryId":selectedVehicle.Id
+            },
+          headers: {'Content-Type': 'application/json'},
+        }).then(onSuccess, onError);
+
+        function onSuccess(data) {
+         var alertPopup = $ionicPopup.alert({
+           title: 'Success',
+           subTitle: 'Purchase has been processed',
+            scope: $scope,
+            buttons: [
+             {
+               text: '<b>Ok</b>',
+               type: 'button-assertive',
+               onTap: function() { }
+             }
+            ]
+           }); 
+        }
+
+        function onError(data) {
+          var alertPopup = $ionicPopup.alert({
+           title: 'Failure',
+           subTitle: 'An error occurred',
+            scope: $scope,
+            buttons: [
+             {
+               text: '<b>Ok</b>',
+               type: 'button-assertive',
+               onTap: function() { }
+             }
+            ]
+           });
+        }
+       
+    }
+
+
+
+    $ionicPopover.fromTemplateUrl('templates/vehicles-popover.html', {
+      scope: $scope,
+    }).then(function(popover) {
+      $scope.popover = popover;
+    });
+
+    $scope.openPopover = function($event) {
+      $scope.popover.show($event);
+    };
+    $scope.closePopover = function() {
+      $scope.popover.hide();
+    };
+//Cleanup the popover when we're done with it!
+    $scope.$on('$destroy', function() {
+      $scope.popover.remove();
+    });
+    // Execute action on hide popover
+    $scope.$on('popover.hidden', function() {
+      // alert(JSON.stringify($scope.vehiclesData));
+      // VehiclePurchase.setVehicleColors($scope.colorsData);
+      // VehiclePurchase.setVehicleOptions($scope.optionsData);
+
+    });
+    // Execute action on remove popover
+    $scope.$on('popover.removed', function() {
+      // Execute action
+    });
 });
 
 
