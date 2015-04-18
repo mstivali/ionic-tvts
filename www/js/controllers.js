@@ -368,7 +368,7 @@ angular.module('starter.controllers', [])
 
 })
 
-.controller("CustomerRegistration",  function($scope, $http, $ionicPopup, $stateParams) {
+.controller("CustomerRegistration",  function($scope, $state, $http, $ionicPopup, $stateParams) {
     
     $scope.master = {};
 
@@ -408,7 +408,7 @@ angular.module('starter.controllers', [])
              {
                text: '<b>Ok</b>',
                type: 'button-assertive',
-               onTap: function() { }
+               onTap: function() { $state.go("app.customers-list"); }
              }
             ]
            }); 
@@ -457,19 +457,38 @@ angular.module('starter.controllers', [])
     if($stateParams.mode == "master")
     {
       $scope.puchasingState = false;
+      $scope.masterState = true;
+
+      $http({
+        url: 'http://tvts.azurewebsites.net/api/customer/purchase-records', 
+        method: "GET",
+        params: {customerId: customerId}
+      }).success(function(data){
+          $scope.purchases = data;
+
+          if($scope.purchases.length == 0)
+          {
+            $scope.title = "No Vehicle Purchases On File";
+          }
+          else
+          {
+            $scope.title = "Purchased Vehicles";
+          }
+         
+      })
     }
     else
     {
       $scope.purchasingState = true;
-    }
+      $scope.masterState = false;
+      $scope.showPurchases = false;
 
-    $http({
+      $http({
         url: 'http://tvts.azurewebsites.net/api/vehicles', 
         method: "GET",
       }).success(function(data){
          var vehicles = data;
-         // alert(JSON.stringify(data));
-
+         
          var vehiclesData = []
         for(var index in vehicles)
         {
@@ -484,9 +503,13 @@ angular.module('starter.controllers', [])
             vehiclesData.push(temp);
         }
 
+        alert(JSON.stringify(vehiclesData));
         $scope.vehiclesData = vehiclesData;
 
       });
+    }
+
+    
 
     $scope.purchaseVehicle = function() {
 
