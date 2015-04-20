@@ -345,7 +345,7 @@ angular.module('starter.controllers', [])
       
 })
 
-.controller("VehicleSpecsController", function($scope, $http, $ionicPopup, $ionicLoading, $stateParams) {
+.controller("VehicleSpecsController", function($scope, $http, $state, $ionicPopup, $ionicLoading, $stateParams) {
 
       $scope.modelName = $stateParams.ModelName;
       $scope.styleTrim = $stateParams.StyleTrim;
@@ -374,17 +374,19 @@ angular.module('starter.controllers', [])
                   text: 'Yes', 
                   type: 'button-assertive',
                   onTap: function() {
-                      alert('Deleting Item');
-                      // $http({
-                      //   url: 'http://tvts.azurewebsites.net/api/vehicle/delete', 
-                      //   method: "DELETE",
-                      //   params: {styleId: $stateParams.StyleId}
-                      // }).success(function(data){
-                      //    $scope.engines = data.EngineDetail.Engines;
-                      //    $scope.transmissions = data.TransmissionDetail.Transmissions;
-                      //    $scope.equipmentArray = data.EquipmentDetail.Equipment;
-                      //    $ionicLoading.hide();
-                      // });
+
+                     $ionicLoading.show({
+                      template: 'Deleting Vehicle...'
+                      });
+
+                      $http({
+                        url: 'http://tvts.azurewebsites.net/api/vehicle/delete', 
+                        method: "DELETE",
+                        params: {inventoryId: $stateParams.InventoryId}
+                      }).success(function(data){
+                          $ionicLoading.hide();
+                          $state.go("app.inventory", {}, {reload: true});
+                      });
                   }
                 },
                 {text: 'No', type: 'button-assertive'}
@@ -408,7 +410,6 @@ angular.module('starter.controllers', [])
       }).success(function(data){
         $ionicLoading.hide();
          $scope.vehicles = data;
-         // alert(JSON.stringify(data));
       });
 })
 

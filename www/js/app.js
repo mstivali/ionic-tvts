@@ -83,7 +83,7 @@ angular.module('starter', [
   })
 
   .state('app.vehicle-specs', {
-    url: "/specs/:ModelName/:StyleTrim/:StyleId",
+    url: "/specs/:InventoryId/:ModelName/:StyleTrim/:StyleId",
     views: {
       'menuContent' : {
         templateUrl : "templates/vehicle-specs.html",
