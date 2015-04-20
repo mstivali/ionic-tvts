@@ -12,10 +12,20 @@
 				    <p>{{phone}}</p>
 				    <p>{{email}}</p>
 				  </div>
-				  <div class="item item-image">
-				    
+				  <div class="item item-divider">
+				    {{title}} 
 				  </div>
-				  <a class="item item-icon-left assertive"></a>
+				  <div class="item item-text-wrap">
+				  	<div class="list" ng-repeat="purchase in purchases">
+					    <a class="item item-thumbnail-left" href="">
+					      <img ng-src="img/cars/{{purchase.ModelIdName}}.jpg">
+					      <h2>{{puchase.ModelName}}</h2>
+					      <p>{{purchase.StyleTrim}}</p>
+					      <p>{{purchase.Color}}</p>
+					      <p>{{purchase.DatePurchased}}</p>
+					    </a>
+					</div>
+				  </div>
 				</div>
 			</div>
 		</div>
@@ -36,7 +46,7 @@
 			</button>
 			</div>
 		</div>
-		<div class="card">
+<!-- 		<div class="card">
 		  <div class="item item-divider">
 		    {{title}} 
 		  </div>
@@ -51,7 +61,7 @@
 			    </a>
 			</div>
 		  </div>
-	   </div>
+	   </div> -->
 	</div>
   </ion-content>
 </ion-view>
