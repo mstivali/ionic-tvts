@@ -236,7 +236,7 @@ angular.module('starter.controllers', [])
     }
 })
 
-.controller("PurchaseSummaryController", function($scope, $http, $state, $ionicPopup, $stateParams, VehiclePurchase) {
+.controller("PurchaseSummaryController", function($scope, $http, $state, $ionicPopup, $ionicLoading, $stateParams, VehiclePurchase) {
 
       var modelId = $stateParams.modelId;
 
@@ -290,6 +290,10 @@ angular.module('starter.controllers', [])
 
       $scope.confirmPurchase = function() {
 
+        $ionicLoading.show({
+        template: 'Processing Order...'
+        });
+
         $http({
           url: 'http://tvts.azurewebsites.net/api/vehicle/save',
           method: "POST",
@@ -304,6 +308,7 @@ angular.module('starter.controllers', [])
         }).then(onSuccess, onError);
 
         function onSuccess(data) {
+         $ionicLoading.hide();
          var alertPopup = $ionicPopup.alert({
            title: 'Success',
            subTitle: 'Vehicle added to inventory',
@@ -321,6 +326,7 @@ angular.module('starter.controllers', [])
         }
 
         function onError(data) {
+          $ionicLoading.hide();
           var alertPopup = $ionicPopup.alert({
            title: 'Failure',
            subTitle: 'An error occurred',
@@ -444,15 +450,20 @@ angular.module('starter.controllers', [])
 
 })
 
-.controller("CustomersController",  function($scope, $http, $ionicPopup, $stateParams) {
+.controller("CustomersController",  function($scope, $http, $ionicLoading, $ionicPopup, $stateParams) {
 
     $scope.mode = $stateParams.mode;
+
+    $ionicLoading.show({
+      template: 'Loading...'
+      });
 
     $http({
         url: 'http://tvts.azurewebsites.net/api/customers', 
         method: "GET",
       }).success(function(data){
          $scope.customers = data;
+         $ionicLoading.hide();
       });
 
 })
