@@ -1,6 +1,7 @@
-<ion-view view-title="Customer Detail">
+<ion-view view-title="Customer Detail" cache-view="false">
   <ion-content>
 
+  	<br><br><br><br>
   	<br><br><br><br>
     <div class="container">
 		 <div class="row-center">
@@ -26,26 +27,26 @@
 					    </a>
 					</div>
 				  </div>
+				  <button ng-show={{purchasingState}} ng-click="openPopover($event)" class="button button-block button-assertive">
+				  Select Vehicle
+				</button>
+				<button ng-show={{purchasingState}} on-tap="purchaseVehicle()" class="button button-block button-assertive">
+					  Process Purchase
+				</button>
 				</div>
 			</div>
 		</div>
-		<br><br><br><br>
+<!-- 		<br><br><br><br>
 		<div class="row">
 			<div class="col col-50 center">
-				<!-- <button on-tap="viewSpecs()" class="button button-block button-assertive">
-				  View Details
-				</button> -->
 			<button ng-show={{purchasingState}} ng-click="openPopover($event)" class="button button-block button-assertive">
 				  Select Vehicle
 			</button>
-<!-- 			<button ng-click="openColorsPopover($event)" class="button button-block button-assertive">
-				  Choose Vehicle Color
-			</button> -->
 			<button ng-show={{purchasingState}} on-tap="purchaseVehicle()" class="button button-block button-assertive">
 				  Process Purchase
 			</button>
 			</div>
-		</div>
+		</div> -->
 <!-- 		<div class="card">
 		  <div class="item item-divider">
 		    {{title}} 

@@ -236,7 +236,7 @@ angular.module('starter.controllers', [])
     }
 })
 
-.controller("PurchaseSummaryController", function($scope, $http, $state, $ionicPopup, $ionicLoading, $stateParams, VehiclePurchase) {
+.controller("PurchaseSummaryController", function($ionicViewService, $scope, $http, $state, $ionicPopup, $ionicLoading, $stateParams, VehiclePurchase) {
 
       var modelId = $stateParams.modelId;
 
@@ -309,6 +309,11 @@ angular.module('starter.controllers', [])
 
         function onSuccess(data) {
          $ionicLoading.hide();
+
+          $ionicViewService.nextViewOptions({
+            disableBack: true
+          });
+
          var alertPopup = $ionicPopup.alert({
            title: 'Success',
            subTitle: 'Vehicle added to inventory',
@@ -502,7 +507,7 @@ angular.module('starter.controllers', [])
 
 })
 
-.controller("CustomerDetailController",  function($scope, $http, $ionicPopup, $ionicPopover, $stateParams) {
+.controller("CustomerDetailController",  function($ionicViewService, $scope, $http, $ionicPopup, $ionicLoading, $ionicPopover, $state, $stateParams) {
 
     var customerId = $stateParams.customerId;
     $scope.firstname  = $stateParams.firstname;
@@ -551,6 +556,7 @@ angular.module('starter.controllers', [])
             var temp = {
                           "Selected":false,
                           "Id":vehicles[index].Id,
+                          "ModelIdName":vehicles[index].ModelIdName,
                           "ModelName":vehicles[index].ModelName, 
                           "StyleTrim":vehicles[index].StyleTrim,
                           "Color":vehicles[index].Color
@@ -559,7 +565,6 @@ angular.module('starter.controllers', [])
             vehiclesData.push(temp);
         }
 
-        alert(JSON.stringify(vehiclesData));
         $scope.vehiclesData = vehiclesData;
 
       });
@@ -589,8 +594,9 @@ angular.module('starter.controllers', [])
 
        var selectedVehicle = processVehicles($scope.vehiclesData);
 
-       alert(customerId);
-       alert(selectedVehicle.Id);
+      $ionicLoading.show({
+      template: 'Processing Purchase...'
+      });
 
       $http({
           url: 'http://tvts.azurewebsites.net/api/vehicle/purchase',
@@ -603,6 +609,12 @@ angular.module('starter.controllers', [])
         }).then(onSuccess, onError);
 
         function onSuccess(data) {
+          $ionicLoading.hide();
+
+            $ionicViewService.nextViewOptions({
+              disableBack: true
+            });
+
          var alertPopup = $ionicPopup.alert({
            title: 'Success',
            subTitle: 'Purchase has been processed',
@@ -611,13 +623,14 @@ angular.module('starter.controllers', [])
              {
                text: '<b>Ok</b>',
                type: 'button-assertive',
-               onTap: function() { }
+               onTap: function() {$state.go("app.customers-list", {"mode":"master"});}
              }
             ]
            }); 
         }
 
         function onError(data) {
+          $ionicLoading.hide();
           var alertPopup = $ionicPopup.alert({
            title: 'Failure',
            subTitle: 'An error occurred',
@@ -633,8 +646,6 @@ angular.module('starter.controllers', [])
         }
        
     }
-
-
 
     $ionicPopover.fromTemplateUrl('templates/vehicles-popover.html', {
       scope: $scope,
