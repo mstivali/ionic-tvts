@@ -424,7 +424,7 @@ angular.module('starter.controllers', [])
 
 })
 
-.controller("CustomerRegistration",  function($scope, $state, $http, $ionicPopup, $stateParams) {
+.controller("CustomerRegistration",  function($scope, $ionicViewService, $ionicLoading, $state, $http, $ionicPopup, $stateParams) {
     
     $scope.master = {};
 
@@ -443,6 +443,14 @@ angular.module('starter.controllers', [])
       $scope.submitForm = function(user) {
          $scope.master = angular.copy(user);
 
+           $ionicLoading.show({
+          template: 'Registering Customer...'
+          });
+
+          $ionicViewService.nextViewOptions({
+          disableBack: true
+          });
+
         $http({
           url: 'http://tvts.azurewebsites.net/api/customer/save',
           method: "POST",
@@ -456,6 +464,7 @@ angular.module('starter.controllers', [])
         }).then(onSuccess, onError);
 
         function onSuccess(data) {
+          $ionicLoading.hide();
          var alertPopup = $ionicPopup.alert({
            title: 'Success',
            subTitle: 'Customer Registered',

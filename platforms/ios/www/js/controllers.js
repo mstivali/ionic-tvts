@@ -33,24 +33,29 @@ angular.module('starter.controllers', [])
   };
 })
 
-.controller('ModelsController', function($scope, $http) {
+.controller('ModelsController', function($scope, $ionicLoading, $http) {
 
-  // $http.get('cars/cars.json').success(function(data) {
-  //     $scope.models = data;
-  //   });
+  $ionicLoading.show({
+      template: 'Loading...'
+      });
 
   $http({
     url: 'http://tvts.azurewebsites.net/api/cars', 
     method: "GET",
   }).success(function(data){
      $scope.models = data;
+     $ionicLoading.hide();
   })
 
 })
 
-.controller('StylesController', function($scope, $http, $stateParams) {
+.controller('StylesController', function($scope, $http, $ionicLoading, $stateParams) {
 
   $scope.modelId = $stateParams.modelId;
+
+  $ionicLoading.show({
+      template: 'Loading...'
+      });
 
   $http({
     url: 'http://tvts.azurewebsites.net/api/styles', 
@@ -59,6 +64,7 @@ angular.module('starter.controllers', [])
   }).success(function(data){
       // alert(JSON.stringify(data));
      $scope.styles = data.Styles;
+     $ionicLoading.hide();
   })
 
 })
@@ -230,7 +236,7 @@ angular.module('starter.controllers', [])
     }
 })
 
-.controller("PurchaseSummaryController", function($scope, $http, $state, $ionicPopup, $stateParams, VehiclePurchase) {
+.controller("PurchaseSummaryController", function($ionicViewService, $scope, $http, $state, $ionicPopup, $ionicLoading, $stateParams, VehiclePurchase) {
 
       var modelId = $stateParams.modelId;
 
@@ -284,6 +290,10 @@ angular.module('starter.controllers', [])
 
       $scope.confirmPurchase = function() {
 
+        $ionicLoading.show({
+        template: 'Processing Order...'
+        });
+
         $http({
           url: 'http://tvts.azurewebsites.net/api/vehicle/save',
           method: "POST",
@@ -298,6 +308,12 @@ angular.module('starter.controllers', [])
         }).then(onSuccess, onError);
 
         function onSuccess(data) {
+         $ionicLoading.hide();
+
+          $ionicViewService.nextViewOptions({
+            disableBack: true
+          });
+
          var alertPopup = $ionicPopup.alert({
            title: 'Success',
            subTitle: 'Vehicle added to inventory',
@@ -315,6 +331,7 @@ angular.module('starter.controllers', [])
         }
 
         function onError(data) {
+          $ionicLoading.hide();
           var alertPopup = $ionicPopup.alert({
            title: 'Failure',
            subTitle: 'An error occurred',
@@ -333,10 +350,14 @@ angular.module('starter.controllers', [])
       
 })
 
-.controller("VehicleSpecsController", function($scope, $http, $stateParams) {
+.controller("VehicleSpecsController", function($scope, $http, $state, $ionicPopup, $ionicLoading, $stateParams) {
 
       $scope.modelName = $stateParams.ModelName;
       $scope.styleTrim = $stateParams.StyleTrim;
+
+      $ionicLoading.show({
+      template: 'Loading...'
+      });
       
       $http({
         url: 'http://tvts.azurewebsites.net/api/specs', 
@@ -346,19 +367,54 @@ angular.module('starter.controllers', [])
          $scope.engines = data.EngineDetail.Engines;
          $scope.transmissions = data.TransmissionDetail.Transmissions;
          $scope.equipmentArray = data.EquipmentDetail.Equipment;
+         $ionicLoading.hide();
       });
+
+      $scope.deleteVehicle = function() {
+           var confirmPopup = $ionicPopup.confirm({
+             title: 'Delete Vehicle Inventory',
+             template: 'Are you sure you want to delete this vehicle?',
+             buttons: [
+                {
+                  text: 'Yes', 
+                  type: 'button-assertive',
+                  onTap: function() {
+
+                     $ionicLoading.show({
+                      template: 'Deleting Vehicle...'
+                      });
+
+                      $http({
+                        url: 'http://tvts.azurewebsites.net/api/vehicle/delete', 
+                        method: "DELETE",
+                        params: {inventoryId: $stateParams.InventoryId}
+                      }).success(function(data){
+                          $ionicLoading.hide();
+                          $state.go("app.inventory", {}, {reload: true});
+                      });
+                  }
+                },
+                {text: 'No', type: 'button-assertive'}
+             ]
+           });
+
+      } 
 
 })
 
 .controller("InventoryController", 
-  function($scope, $http, $ionicPopover, $ionicModal, $ionicPopup, $timeout) {
+  function($scope, $http, $ionicLoading, $ionicPopover, $ionicModal, $ionicPopup, $timeout) {
+
+     $ionicLoading.show({
+      template: 'Loading...'
+      });
 
       $http({
         url: 'http://tvts.azurewebsites.net/api/vehicles', 
         method: "GET",
       }).success(function(data){
+        $ionicLoading.hide();
          $scope.vehicles = data;
-         // alert(JSON.stringify(data));
       });
 })
 
@@ -368,7 +424,7 @@ angular.module('starter.controllers', [])
 
 })
 
-.controller("CustomerRegistration",  function($scope, $http, $ionicPopup, $stateParams) {
+.controller("CustomerRegistration",  function($scope, $ionicViewService, $ionicLoading, $state, $http, $ionicPopup, $stateParams) {
     
     $scope.master = {};
 
@@ -387,6 +443,14 @@ angular.module('starter.controllers', [])
       $scope.submitForm = function(user) {
          $scope.master = angular.copy(user);
 
+           $ionicLoading.show({
+          template: 'Registering Customer...'
+          });
+
+          $ionicViewService.nextViewOptions({
+          disableBack: true
+          });
+
         $http({
           url: 'http://tvts.azurewebsites.net/api/customer/save',
           method: "POST",
@@ -400,6 +464,7 @@ angular.module('starter.controllers', [])
         }).then(onSuccess, onError);
 
         function onSuccess(data) {
+          $ionicLoading.hide();
          var alertPopup = $ionicPopup.alert({
            title: 'Success',
            subTitle: 'Customer Registered',
@@ -408,7 +473,7 @@ angular.module('starter.controllers', [])
              {
                text: '<b>Ok</b>',
                type: 'button-assertive',
-               onTap: function() { }
+               onTap: function() { $state.go("app.customers-list"); }
              }
             ]
            }); 
@@ -433,15 +498,191 @@ angular.module('starter.controllers', [])
 
 })
 
-.controller("CustomersController",  function($scope, $http, $ionicPopup, $stateParams) {
+.controller("CustomersController",  function($scope, $http, $ionicLoading, $ionicPopup, $stateParams) {
+
+    $scope.mode = $stateParams.mode;
+
+    $ionicLoading.show({
+      template: 'Loading...'
+      });
 
     $http({
         url: 'http://tvts.azurewebsites.net/api/customers', 
         method: "GET",
       }).success(function(data){
          $scope.customers = data;
+         $ionicLoading.hide();
       });
 
+})
+
+.controller("CustomerDetailController",  function($ionicViewService, $scope, $http, $ionicPopup, $ionicLoading, $ionicPopover, $state, $stateParams) {
+
+    var customerId = $stateParams.customerId;
+    $scope.firstname  = $stateParams.firstname;
+    $scope.lastname = $stateParams.lastname;
+    $scope.phone = $stateParams.phone;
+    $scope.email = $stateParams.email;
+    
+    if($stateParams.mode == "master")
+    {
+      $scope.puchasingState = false;
+      $scope.masterState = true;
+
+      $http({
+        url: 'http://tvts.azurewebsites.net/api/customer/purchase-records', 
+        method: "GET",
+        params: {customerId: customerId}
+      }).success(function(data){
+          $scope.purchases = data;
+
+          if($scope.purchases.length == 0)
+          {
+            $scope.title = "No Vehicle Purchases On File";
+          }
+          else
+          {
+            $scope.title = "Purchased Vehicles";
+          }
+         
+      })
+    }
+    else
+    {
+      $scope.purchasingState = true;
+      $scope.masterState = false;
+      $scope.showPurchases = false;
+
+      $http({
+        url: 'http://tvts.azurewebsites.net/api/vehicles', 
+        method: "GET",
+      }).success(function(data){
+         var vehicles = data;
+         
+         var vehiclesData = []
+        for(var index in vehicles)
+        {
+            var temp = {
+                          "Selected":false,
+                          "Id":vehicles[index].Id,
+                          "ModelIdName":vehicles[index].ModelIdName,
+                          "ModelName":vehicles[index].ModelName, 
+                          "StyleTrim":vehicles[index].StyleTrim,
+                          "Color":vehicles[index].Color
+                       };
+
+            vehiclesData.push(temp);
+        }
+
+        $scope.vehiclesData = vehiclesData;
+
+      });
+    }
+
+    
+
+    $scope.purchaseVehicle = function() {
+
+      var processVehicles = function(vehicles) {
+
+
+        var selectedVehicle;
+
+        for(var index in vehicles)
+        {
+          if(vehicles[index].Selected == "true")
+          {
+            // alert(JSON.stringify(colors[index]));
+            selectedVehicle = vehicles[index];
+          }
+        }
+
+        return selectedVehicle;
+
+       }
+
+       var selectedVehicle = processVehicles($scope.vehiclesData);
+
+      $ionicLoading.show({
+      template: 'Processing Purchase...'
+      });
+
+      $http({
+          url: 'http://tvts.azurewebsites.net/api/vehicle/purchase',
+          method: "PUT",
+          data: {
+            "CustomerId":customerId,
+            "InventoryId":selectedVehicle.Id
+            },
+          headers: {'Content-Type': 'application/json'},
+        }).then(onSuccess, onError);
+
+        function onSuccess(data) {
+          $ionicLoading.hide();
+
+            $ionicViewService.nextViewOptions({
+              disableBack: true
+            });
+
+         var alertPopup = $ionicPopup.alert({
+           title: 'Success',
+           subTitle: 'Purchase has been processed',
+            scope: $scope,
+            buttons: [
+             {
+               text: '<b>Ok</b>',
+               type: 'button-assertive',
+               onTap: function() {$state.go("app.customers-list", {"mode":"master"});}
+             }
+            ]
+           }); 
+        }
+
+        function onError(data) {
+          $ionicLoading.hide();
+          var alertPopup = $ionicPopup.alert({
+           title: 'Failure',
+           subTitle: 'An error occurred',
+            scope: $scope,
+            buttons: [
+             {
+               text: '<b>Ok</b>',
+               type: 'button-assertive',
+               onTap: function() { }
+             }
+            ]
+           });
+        }
+       
+    }
+
+    $ionicPopover.fromTemplateUrl('templates/vehicles-popover.html', {
+      scope: $scope,
+    }).then(function(popover) {
+      $scope.popover = popover;
+    });
+
+    $scope.openPopover = function($event) {
+      $scope.popover.show($event);
+    };
+    $scope.closePopover = function() {
+      $scope.popover.hide();
+    };
+//Cleanup the popover when we're done with it!
+    $scope.$on('$destroy', function() {
+      $scope.popover.remove();
+    });
+    // Execute action on hide popover
+    $scope.$on('popover.hidden', function() {
+      // alert(JSON.stringify($scope.vehiclesData));
+      // VehiclePurchase.setVehicleColors($scope.colorsData);
+      // VehiclePurchase.setVehicleOptions($scope.optionsData);
+
+    });
+    // Execute action on remove popover
+    $scope.$on('popover.removed', function() {
+      // Execute action
+    });
 });
 
 

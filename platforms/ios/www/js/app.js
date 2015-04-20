@@ -83,7 +83,7 @@ angular.module('starter', [
   })
 
   .state('app.vehicle-specs', {
-    url: "/specs/:ModelName/:StyleTrim/:StyleId",
+    url: "/specs/:InventoryId/:ModelName/:StyleTrim/:StyleId",
     views: {
       'menuContent' : {
         templateUrl : "templates/vehicle-specs.html",
@@ -123,11 +123,21 @@ angular.module('starter', [
   })
 
   .state('app.customers-list', {
-    url:"/customers",
+    url:"/customers/:mode",
     views: {
       'menuContent' : {
         templateUrl : "templates/customers.html",
         controller : "CustomersController"
+      }
+    }
+  })
+
+  .state('app.customers-detail', {
+    url:"/customers/:customerId/:firstname/:lastname/:phone/:email/:mode",
+    views: {
+      'menuContent' : {
+        templateUrl : "templates/customer-detail.html",
+        controller : "CustomerDetailController"
       }
     }
   });

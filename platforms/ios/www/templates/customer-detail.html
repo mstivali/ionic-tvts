@@ -1,0 +1,68 @@
+<ion-view view-title="Customer Detail" cache-view="false">
+  <ion-content>
+
+  	<br><br><br><br>
+  	<br><br><br><br>
+    <div class="container">
+		 <div class="row-center">
+		 	<div class="col col-50 center">
+			    <div class="list card">
+				  <div class="item item-avatar">
+				  	<img ng-src="img/userFlat.png">
+				    <h2>{{firstname}} {{lastname}}</h2>
+				    <p>{{phone}}</p>
+				    <p>{{email}}</p>
+				  </div>
+				  <div class="item item-divider">
+				    {{title}} 
+				  </div>
+				  <div class="item item-text-wrap">
+				  	<div class="list" ng-repeat="purchase in purchases">
+					    <a class="item item-thumbnail-left" href="">
+					      <img ng-src="img/cars/{{purchase.ModelIdName}}.jpg">
+					      <h2>{{puchase.ModelName}}</h2>
+					      <p>{{purchase.StyleTrim}}</p>
+					      <p>{{purchase.Color}}</p>
+					      <p>{{purchase.DatePurchased}}</p>
+					    </a>
+					</div>
+				  </div>
+				  <button ng-show={{purchasingState}} ng-click="openPopover($event)" class="button button-block button-assertive">
+				  Select Vehicle
+				</button>
+				<button ng-show={{purchasingState}} on-tap="purchaseVehicle()" class="button button-block button-assertive">
+					  Process Purchase
+				</button>
+				</div>
+			</div>
+		</div>
+<!-- 		<br><br><br><br>
+		<div class="row">
+			<div class="col col-50 center">
+			<button ng-show={{purchasingState}} ng-click="openPopover($event)" class="button button-block button-assertive">
+				  Select Vehicle
+			</button>
+			<button ng-show={{purchasingState}} on-tap="purchaseVehicle()" class="button button-block button-assertive">
+				  Process Purchase
+			</button>
+			</div>
+		</div> -->
+<!-- 		<div class="card">
+		  <div class="item item-divider">
+		    {{title}} 
+		  </div>
+		  <div class="item item-text-wrap">
+		  	<div class="list" ng-repeat="purchase in purchases">
+			    <a class="item item-thumbnail-left" href="">
+			      <img ng-src="img/cars/{{purchase.ModelIdName}}.jpg">
+			      <h2>{{puchase.ModelName}}</h2>
+			      <p>{{purchase.StyleTrim}}</p>
+			      <p>{{purchase.Color}}</p>
+			      <p>{{purchase.DatePurchased}}</p>
+			    </a>
+			</div>
+		  </div>
+	   </div> -->
+	</div>
+  </ion-content>
+</ion-view>

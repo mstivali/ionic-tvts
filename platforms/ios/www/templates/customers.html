@@ -1,4 +1,4 @@
-<ion-view view-title="Customers">
+<ion-view view-title="Customers" cache-view="false">
   <ion-content>
 
   	 <div class="list list-inset">
@@ -9,7 +9,7 @@
 	</div>
 
 	<div class="list" ng-repeat="customer in customers | filter:query">
-	    <a class="item item-thumbnail-left" href="">
+	    <a class="item item-thumbnail-left" href="#/app/customers/{{customer.Id}}/{{customer.Firstname}}/{{customer.Lastname}}/{{customer.Phone}}/{{customer.Email}}/{{mode}}">
 	      <img ng-src="img/userFlat.png">
 	      <h2>{{customer.Firstname + " " + customer.Lastname}}</h2>
 	      <p>{{customer.Phone}}</p>
