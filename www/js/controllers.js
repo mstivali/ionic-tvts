@@ -33,24 +33,29 @@ angular.module('starter.controllers', [])
   };
 })
 
-.controller('ModelsController', function($scope, $http) {
+.controller('ModelsController', function($scope, $ionicLoading, $http) {
 
-  // $http.get('cars/cars.json').success(function(data) {
-  //     $scope.models = data;
-  //   });
+  $ionicLoading.show({
+      template: 'Loading...'
+      });
 
   $http({
     url: 'http://tvts.azurewebsites.net/api/cars', 
     method: "GET",
   }).success(function(data){
      $scope.models = data;
+     $ionicLoading.hide();
   })
 
 })
 
-.controller('StylesController', function($scope, $http, $stateParams) {
+.controller('StylesController', function($scope, $http, $ionicLoading, $stateParams) {
 
   $scope.modelId = $stateParams.modelId;
+
+  $ionicLoading.show({
+      template: 'Loading...'
+      });
 
   $http({
     url: 'http://tvts.azurewebsites.net/api/styles', 
@@ -59,6 +64,7 @@ angular.module('starter.controllers', [])
   }).success(function(data){
       // alert(JSON.stringify(data));
      $scope.styles = data.Styles;
+     $ionicLoading.hide();
   })
 
 })
@@ -351,12 +357,17 @@ angular.module('starter.controllers', [])
 })
 
 .controller("InventoryController", 
-  function($scope, $http, $ionicPopover, $ionicModal, $ionicPopup, $timeout) {
+  function($scope, $http, $ionicLoading, $ionicPopover, $ionicModal, $ionicPopup, $timeout) {
+
+     $ionicLoading.show({
+      template: 'Loading...'
+      });
 
       $http({
         url: 'http://tvts.azurewebsites.net/api/vehicles', 
         method: "GET",
       }).success(function(data){
+        $ionicLoading.hide();
          $scope.vehicles = data;
          // alert(JSON.stringify(data));
       });
