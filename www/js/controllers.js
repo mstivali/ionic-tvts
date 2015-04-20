@@ -345,10 +345,14 @@ angular.module('starter.controllers', [])
       
 })
 
-.controller("VehicleSpecsController", function($scope, $http, $stateParams) {
+.controller("VehicleSpecsController", function($scope, $http, $ionicLoading, $stateParams) {
 
       $scope.modelName = $stateParams.ModelName;
       $scope.styleTrim = $stateParams.StyleTrim;
+
+      $ionicLoading.show({
+      template: 'Loading...'
+      });
       
       $http({
         url: 'http://tvts.azurewebsites.net/api/specs', 
@@ -358,6 +362,7 @@ angular.module('starter.controllers', [])
          $scope.engines = data.EngineDetail.Engines;
          $scope.transmissions = data.TransmissionDetail.Transmissions;
          $scope.equipmentArray = data.EquipmentDetail.Equipment;
+         $ionicLoading.hide();
       });
 
 })
