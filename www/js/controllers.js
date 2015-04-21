@@ -480,6 +480,7 @@ angular.module('starter.controllers', [])
         }
 
         function onError(data) {
+          $ionicLoading.hide();
           var alertPopup = $ionicPopup.alert({
            title: 'Failure',
            subTitle: 'An error occurred',
