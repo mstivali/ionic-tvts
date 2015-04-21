@@ -1,0 +1,39 @@
+<ion-view view-title="Maintance Report">
+  <ion-content>
+  <br>
+    <h3 align="center">{{ModelName}}</h3>
+    <div class="card">
+	  <div class="item item-divider">
+	    Maintance Action Items
+	  </div>
+	  <div class="item item-text-wrap">
+	    <dl ng-repeat="item in actionItems">
+		      <dt>Id<dt>
+		      <dd>{{item.Id}}</dd>
+		      <dt>Engine Code<dt>
+		      <dd>{{item.EngineCode}}</dd>
+		      <dt>Transmission Code</dt>
+		      <dd>{{item.TransmissionCode}}</dd>
+		      <dt>Interval Mileage</dt>
+		      <dd>{{item.IntervalMileage}}</dd>
+		      <dt>Interval Month</dt>
+		      <dd>{{item.IntervalMonth}}</dd>
+		      <dt>Frequency</dt>
+		      <dd>{{item.Frequency}}</dd>
+		      <dt>Action</dt>
+		      <dd>{{item.Action}}</dd>
+		      <dt>Item</dt>
+		      <dd>{{item.Item}}</dd>
+		      <dt>Item Description</dt>
+		      <dd>{{item.ItemDescription}}</dd>
+		      <dt>Labor Units</dt>
+		      <dd>{{item.LaborUnits}}</dd>
+		      <dt>Parts Units</dt>
+		      <dd>{{item.PartsUnits}}</dd>
+		      <dt>Drive Type</dt>
+		      <dd>{{item.DriveType}}</dd>		
+		    </dl>
+	  </div>
+   </div>
+  </ion-content>
+</ion-view>

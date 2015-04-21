@@ -684,6 +684,24 @@ angular.module('starter.controllers', [])
     $scope.$on('popover.removed', function() {
       // Execute action
     });
+})
+
+.controller('MaintenanceReportController', function($scope, $ionicLoading, $http, $stateParams) {
+
+      $scope.ModelName = $stateParams.modelName;
+      $ionicLoading.show({
+      template: 'Retreiving Maintenance Report...'
+      });
+
+      $http({
+        url: 'http://tvts.azurewebsites.net/api/maintenance/report', 
+        method: "GET",
+        params: {modelId: $stateParams.modelIdName}
+      }).success(function(data){
+        $ionicLoading.hide();
+        $scope.actionItems = data.ActionHolder; 
+      })
+
 });
 
 

@@ -18,9 +18,9 @@
 				  </div>
 				  <div class="item item-text-wrap">
 				  	<div class="list" ng-repeat="purchase in purchases">
-					    <a class="item item-thumbnail-left" href="">
+					    <a class="item item-thumbnail-left" href="#/app/maintenance/{{purchase.ModelIdName}}/{{purchase.ModelName}}">
 					      <img ng-src="img/cars/{{purchase.ModelIdName}}.jpg">
-					      <h2>{{puchase.ModelName}}</h2>
+					      <h2>{{purchase.ModelName}}</h2>
 					      <p>{{purchase.StyleTrim}}</p>
 					      <p>{{purchase.Color}}</p>
 					      <p>{{purchase.DatePurchased}}</p>

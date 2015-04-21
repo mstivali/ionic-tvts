@@ -140,6 +140,16 @@ angular.module('starter', [
         controller : "CustomerDetailController"
       }
     }
+  })
+
+  .state('app.maintenance-report', {
+    url:"/maintenance/:modelIdName/:modelName",
+    views: {
+      'menuContent' : {
+        templateUrl : "templates/maintenance-report.html",
+        controller : "MaintenanceReportController"
+      }
+    }
   });
 
 
