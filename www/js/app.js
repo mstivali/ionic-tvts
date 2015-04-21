@@ -150,6 +150,16 @@ angular.module('starter', [
         controller : "MaintenanceReportController"
       }
     }
+  })
+
+  .state('app.sales-report', {
+    url:"/inventory/sold",
+    views: {
+      'menuContent' : {
+        templateUrl : "templates/vehicles-sold.html",
+        controller : "SalesReportController"
+      }
+    }
   });
 
 

@@ -702,7 +702,23 @@ angular.module('starter.controllers', [])
         $scope.actionItems = data.ActionHolder; 
       })
 
+})
+
+.controller('SalesReportController', function($scope, $ionicLoading, $http, $stateParams) {
+
+    $ionicLoading.show({
+      template: 'Loading...'
+      });
+
+      $http({
+        url: 'http://tvts.azurewebsites.net/api/vehicles/sold', 
+        method: "GET",
+      }).success(function(data){
+        $ionicLoading.hide();
+         $scope.vehicles = data;
+      });
 });
+
 
 
 

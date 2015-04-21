@@ -1,0 +1,20 @@
+<ion-view view-title="Vehicles Sold">
+  <ion-content>
+   <div class="list list-inset">
+	  <label class="item item-input">
+	    <i class="icon ion-search placeholder-icon"></i>
+	    <input type="text" placeholder="Search" ng-model="query">
+	  </label>
+	</div>
+
+	<div class="list" ng-repeat="vehicle in vehicles | filter:query">
+	    <a class="item item-thumbnail-left" href="#/app/specs/{{vehicle.Id}}/{{vehicle.ModelName}}/{{vehicle.StyleTrim}}/{{vehicle.StyleId}}">
+	      <img ng-src="img/cars/{{vehicle.ModelIdName}}.jpg">
+	      <h2>Model: {{vehicle.ModelName}}</h2>
+	      <p>Trim: {{vehicle.StyleTrim}}</p>
+	      <p>Color: {{vehicle.Color}}</p>
+	      <p>Date Sold: {{vehicle.DatePurchased}}</p>
+	    </a>
+	</div>
+  </ion-content>
+</ion-view>
