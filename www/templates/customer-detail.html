@@ -27,12 +27,20 @@
 					    </a>
 					</div>
 				  </div>
-				  <button ng-show={{purchasingState}} ng-click="openPopover($event)" class="button button-block button-assertive">
-				  Select Vehicle
+				  <div ng-show={{purchasingState}}>
+				  	<br><br><br>
+				  <button ng-click="openPopover($event)" class="button button-block button-assertive">
+				  Select Vehicle<br>
 				</button>
-				<button ng-show={{purchasingState}} on-tap="purchaseVehicle()" class="button button-block button-assertive">
-					  Process Purchase
-				</button>
+			
+					</div>
+					<div ng-show={{purchasingState}}>
+						<br>
+						<button  on-tap="purchaseVehicle()" class="button button-block button-assertive">
+							  Process Purchase
+						</button>
+						<br><br><br>
+					</div>
 				</div>
 			</div>
 		</div>
